@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>奥莱购管理系统</title>
+    <script src="./js/jquery.1.11.3.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/axios.js"></script>
+    <script src="./js/cookie.js"></script>
+
+    <style>
+        body,
+        html {
+            height: 100%;
+            background: #F1F2F3;
+            /* font-family: "黑体"; */
+            /* font-weight: 800; */
+        }
+
+        img {
+            width: 90px;
+            height: 90px;
+            margin: 3px;
+            border: solid 2px #D7DDE8;
+            border-radius: 10px;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #0E1726;
+            height: 50px;
+            margin-top: -10px;
+        }
+
+        tr span {
+            border-radius: 10px;
+        }
+
+        .conn {
+            margin-top: 50px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .conntxt {
+            margin-left: 15.7%;
+            margin-top: 20px;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+
+        table thead {
+            background-color: #D8DFE8;
+        }
+
+        .modal-body input {
+            width: 50%;
+            margin-top: 5px;
+        }
+
+        .menu_style_on {
+            background-color: #FAFAFA;
+            width: 90%;
+            height: 40px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px #cdcdd0;
+            color: #337AB7;
+            font-weight: 900;
+
+        }
+
+        .menu_style_off {
+            width: 90%;
+            height: 40px;
+            font-weight: 900;
+            color: #0E1726;
+
+        }
+
+        .menu_style_on:hover {
+            background-color: #BFC9D4;
+            width: 90%;
+            height: 40px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px #929293;
+            font-weight: 900;
+        }
+
+        .menu_style_off:hover {
+            background-color: #BFC9D4;
+            width: 90%;
+            height: 40px;
+            border-radius: 10px;
+            font-weight: 900;
+
+        }
+
+        svg {
+            position: relative;
+            top: 7px;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 上导航栏 -->
+    <div class="container navbar navbar-fixed-top">
+        <header class="row">
+
+            <div class="col-xs-6">
+                <h3><a href="" style="color: white;font-size: 2rem;">奥莱购后台管理系统</a> </h3>
+            </div>
+            <ul class="col-xs-6 text-right">
+                <h3><a href="" style="color: white;font-size: 1.5rem;" id="del_login">退出登录</a></h3>
+            </ul>
+        </header>
+    </div>
+    <!-- 左侧菜单栏 -->
+    <div class="container conn">
+        <header class="row">
+            <div class="col-xs-2 navbar-fixed-top conn_menu" style="top: 66px;">
+                <ul class="list-unstyled menu-categories" id="accordionExample">
+                    <li class="menu">
+                        <a href="cms_index.html">
+                            <div class="menu_style_off">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-airplay">
+                                    <path
+                                        d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1">
+                                    </path>
+                                    <polygon points="12 15 17 21 7 21 12 15"></polygon>
+                                </svg>
+                                <span>商品管理</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="menu">
+                        <a href="cms_user.html">
+                            <div class="menu_style_on">
+                                <!-- svg标签就是一个图标，忽略掉 -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-layout">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                </svg>
+                                <span>用户管理</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 修改区 -->
+            <ul class="col-xs-10 conntxt" style="background-color: #FFFFFF;">
+                <button class="btn btn-primary btn-default" data-toggle="modal" data-target="#myModal"
+                    style="margin: 10px;">
+                    添加用户
+                </button>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">
+                                <div>ID（手机号）</div>
+                            </th>
+                            <th style="width: 20%;">
+                                <div>密码</div>
+                            </th>
+                            <!-- <th>
+                                <div>手机号</div>
+                            </th> -->
+                            <th style="width: 20%;">
+                                <div>Email</div>
+                            </th>
+                            <th style="width: 20%;">
+                                <div>操作</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="conn_list">
+
+                    </tbody>
+                </table>
+            </ul>
+        </header>
+    </div>
+
+
+    <!-- 模态框-添加用户 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        添加用户
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>ID（手机号）：<br><input type="text"></li>
+                        <li>密码：<br><input type="text"></li>
+                        <!-- <li>手机号：<br><input type="text"></li> -->
+                        <li>邮箱：<br><input type="text"></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="close_add_user" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <input type="button" id="add_user" class="btn btn-primary" value="确认添加">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框-修改用户 -->
+    <div class="modal fade" id="myModal_ed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        修改用户
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>您当前正在修改的用户ID(手机号码)为：<br>
+                            <span id="ed_id" style="color: red;font-size: 1.5em;border: solid 1px #cecece;"></span>
+                        </li>
+                        <li>密码：<br><input type="text" id="ed_password"></li>
+                        <!-- <li>手机：<br><input type="text" id="ed_phone"></li> -->
+                        <li>邮箱：<br><input type="text" id="ed_email"></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="close_ed_user" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <input type="button" id="ed_user" class="btn btn-primary" value="确认修改">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        // 判断是否在登录状态
+        if (!getCookie("username") && !getCookie("password")) {
+            $(location).attr('href', "cms_login.html");
+        }
+        //注销登录状态
+        $("#del_login").click(function () {
+            console.log("ok");
+            removeCookie("username");
+            removeCookie("password");
+            $(location).attr('href', "cms_login.html");
+        })
+        //读取用户信息-start
+        function getuser() {
+            axios.get("http://localhost:3000/user").then(res => {
+                // console.log(res.data);
+                let str = "";
+                for (var i in res.data) {
+                    let str2 = "";
+                    str += `
+                <tr>
+                    <td>
+                        <div>${res.data[i].id}</div>
+                    </td>
+                    <td>
+                        <div>${res.data[i].password}</div>
+                    </td>
+                 
+                    <td>
+                        <div>${res.data[i].email}</div>
+                    </td>
+                    <td style="display:flex">
+                        <div class="myModal_ed" data-toggle="modal" data-target="#myModal_ed">
+                            <span class="btn btn-success btn-sm">修改</span>
+                        </div>
+                        <div class="del_user" style="margin-left:15px"><span class="btn btn-danger btn-sm">删除</span></div>
+                    </td>
+                </tr>`
+                };
+                $("#conn_list").html(str)
+            });
+        }
+        getuser();
+        //读取用户信息-end
+
+
+        //删除用户-start
+        $("#conn_list").delegate("tr .del_user", "click", function () {
+            let delid = $(this).parent().parent().children().eq(0).children().text();
+            let delid_ = "http://localhost:3000/user/" + delid;
+            axios.delete(delid_).then(res => {
+                getuser();
+                console.log("删除成功");
+            });
+        });
+        //删除用户-end
+
+
+        //修改用户信息(先获取)-start
+        $("#conn_list").delegate("tr .myModal_ed", "click", function () {
+            let edid = $(this).parent().parent().children().eq(0).children().text();
+            let edidh = "http://localhost:3000/user/" + edid
+            axios.get(edidh).then(res => {
+                $("#ed_id").text(res.data.id);
+                $("#ed_password").val(res.data.password);
+                $("#ed_phone").val(res.data.phone);
+                $("#ed_email").val(res.data.email);
+
+            })
+        });
+        //修改用户信息(提交)
+        $("#ed_user").click(function () {
+            let putid = $("#ed_id").text();
+            let putidh = "http://localhost:3000/user/" + putid;
+            axios.put(putidh, {
+                password: $("#ed_password").val(),
+                phone: $("#ed_phone").val(),
+                email: $("#ed_email").val()
+            }).then(() => {
+                $("#close_ed_user").click();
+                console.log("修改成功");
+                getuser();
+            })
+
+        })
+        //修改用户信息-end
+
+
+
+
+
+        // 添加用户-start
+        $("#add_user").click(function () {
+            axios.post("http://localhost:3000/user", {
+                    id: $(".modal-body input").eq(0).val(),
+                    password: $(".modal-body input").eq(1).val(),
+                    phone: $(".modal-body input").eq(2).val(),
+                    email: $(".modal-body input").eq(3).val(),
+                })
+                .then(function (res) {
+                    getuser();
+                    // console.log(res);
+                    $("#close_add_user").click();
+                    $(".modal-body input").eq(0).val("");
+                    $(".modal-body input").eq(1).val("");
+                    $(".modal-body input").eq(2).val("");
+                    $(".modal-body input").eq(3).val("");
+                    console.log("添加成功");
+                })
+                .catch(function (e) {
+                    console.log(e);
+                });
+        });
+        //添加用户-end
+
+    });
+</script>
+
+</html>

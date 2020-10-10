@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奥莱购-注册</title>
+    <script src="./js/jquery.1.11.3.js"></script>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/registration.css">
+    <script src="./js/axios.js"></script>
+    <script src="./js/cookie.js"></script>
+</head>
+
+<body>
+    <div class="login_top  clean">
+        <div class="logo">
+            <a href="index.html"><img src="../img/logo.png" alt=""></a>
+        </div>
+        <div class="days7">
+            <ul>
+                <li>
+                    <div class="days_lit days_lit1 "></div>
+                    <div class="days_txt">
+                        <div class="days_red">100%</div>
+                        <div class="days_black">全场正品保证</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="days_lit days_lit2"></div>
+                    <div class="days_txt">
+                        <div class="days_red">SALE</div>
+                        <div class="days_black">每天低价特卖</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="days_lit days_lit3"></div>
+                    <div class="days_txt">
+                        <div class="days_red">7DAYS</div>
+                        <div class="days_black">七天无理由退货</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="login_body clean">
+        <div class="body_pic">
+            <a href="index.html"><img src="../img/reg_big.jpg" alt=""></a>
+        </div>
+        <div class="body_reg">
+            <ul>
+                <li>
+                    <span>注册华盛奥莱会员</span><a href="login.html">已有账户，登录</a>
+                </li>
+                <li>
+                    <span>注册手机</span><input type="text" placeholder="请输入您的手机号" id="user_id">
+                    <div></div>
+                </li>
+                <li>
+                    <span>输入密码</span><input type="password" placeholder="请输入您的密码" id="password_1">
+                    <div></div>
+                </li>
+                </li>
+                <li>
+                    <span>确认密码</span><input type="password" placeholder="请确认您的密码" id="password_2">
+                    <div></div>
+                </li>
+                </li>
+                <li class="clean">
+                    <span>验证码</span>
+                    <input type="text" id="check_1">
+                    <img src="" alt="" id="check_img">
+                    <div></div>
+                </li>
+                <li>
+                    <span>短信验证</span><input type="text" id="check_code"><input id="get_code" type="button"
+                        value="获取验证码">
+                    <div></div>
+                </li>
+                <li>
+                    <input type="button" value="注册" id="btn_reg">
+                    <div></div>
+                </li>
+                <li>
+                    <input type="checkbox" id="check_3"><span><a href="">《奥莱购会员协议》</a></span>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="login_bottom">
+        <div class="links">
+            <ul>
+                <li><a href="">关于奥莱购</a></li>
+                <li>|</li>
+                <li><a href="">联系我们</a></li>
+                <li>|</li>
+                <li><a href="">诚聘英才</a></li>
+                <li>|</li>
+                <li><a href="">商务合作</a></li>
+                <li>|</li>
+                <li><a href="">友情链接</a></li>
+                <li>|</li>
+                <li><a href="">华南城网</a></li>
+                <li>|</li>
+                <li><a href="">华盛Outlets</a></li>
+            </ul>
+        </div>
+        <div class="copyright_txt">
+            <p>Copyright © 2013-2016 深圳华盛电子商务有限公司 粤ICP备16081451-1号 All Right</p>
+            <p>深圳市龙岗区平湖华南城1号交易广场4楼奥莱购（深圳华盛电子商务有限公司</p>
+        </div>
+        <div class="other">
+            <ul>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        let user_id_bool = false;
+        let password_1_bool = false;
+        let password_2_bool = false;
+        let check_1_bool = false;
+        let check_code_bool = false;
+
+        //验证手机号
+        $("#user_id").bind("input propertychange", function (event) {
+            var ck_user_id = /^1\d{10}$/;
+            if ($("#user_id").val()) {
+                if (ck_user_id.test($("#user_id").val())) {
+                    $("#user_id").next().css({
+                        "opacity": "1",
+                        "color": "green"
+                    })
+                    $("#user_id").next().text("格式正确")
+                    user_id_bool = true
+                } else {
+                    $("#user_id").next().css({
+                        "opacity": "1",
+                        "color": "red"
+                    })
+                    $("#user_id").next().text("手机号码格式不正确")
+                }
+            } else {
+                $("#user_id").next().css({
+                    "opacity": "0",
+                })
+            }
+
+        });
+        //验证密码
+        $("#password_1").bind("input propertychange", function (event) {
+            let ck_password_1 = /^[a-z0-9_-]{6,18}$/;
+            if ($("#password_1").val()) {
+                if (ck_password_1.test($("#password_1").val())) {
+                    $("#password_1").next().css({
+                        "opacity": "1",
+                        "color": "green"
+                    })
+                    $("#password_1").next().text("格式正确")
+                    password_1_bool = true
+                } else {
+                    $("#password_1").next().css({
+                        "opacity": "1",
+                        "color": "red"
+                    })
+                    $("#password_1").next().text("密码格式不正确")
+                }
+            } else {
+                $("#password_1").next().css({
+                    "opacity": "0",
+                })
+            }
+            ////
+            $("#password_2").bind("input propertychange", function (event) {
+                if ($("#password_2").val()) {
+                    if ($("#password_1").val() == $("#password_2").val()) {
+                        $("#password_2").next().css({
+                            "opacity": "1",
+                            "color": "green"
+                        })
+                        $("#password_2").next().text("格式正确")
+                        password_2_bool = true
+                    } else {
+                        $("#password_2").next().css({
+                            "opacity": "1",
+                            "color": "red"
+                        })
+                        $("#password_2").next().text("密码输入不一致")
+                    }
+                } else {
+                    $("#password_2").next().css({
+                        "opacity": "0",
+                    })
+                }
+            });
+        });
+        //点击切换验证码图片
+
+        let check_n = ""
+        $("#check_img").click(function () {
+            axios.get("http://localhost:3000/pic_code").then(res => {
+                let i = Math.round(Math.random() * 11);
+                $("#check_img").attr("src", `${res.data[i].pic}`)
+                check_n = res.data[i].picname
+            })
+        })
+        $("#check_img").click()
+        //验证码
+        $("#check_1").bind("input propertychange", function (event) {
+            console.log($("#check_1").val(), check_n);
+            if ($("#check_1").val()) {
+                if ($("#check_1").val() == check_n) {
+                    $("#check_1").next().next().css({
+                        "opacity": "1",
+                        "color": "green"
+                    })
+                    $("#check_1").next().next().text("验证码正确")
+                    check_1_bool = true
+                } else {
+                    $("#check_1").next().next().css({
+                        "opacity": "1",
+                        "color": "red"
+                    })
+                    $("#check_1").next().next().text("请输入正确的验证码")
+                }
+            } else {
+                $("#check_1").next().next().css({
+                    "opacity": "0",
+                })
+            }
+        });
+        //短信验证码
+        let phone_code = 0
+        $("#get_code").click(function () {
+            //取四位随机数
+            function getRandCode() {
+                var str = "0123456789";
+                var code = "";
+                for (var i = 0; i < 4; i++) {
+                    var randIndex = Math.floor(Math.random() * str.length);
+                    var randCode = str[randIndex];
+                    var
+                        randCode = str.charAt(randIndex);
+                    code += randCode;
+                }
+                return code;
+            }
+            //赋值
+            phone_code = getRandCode()
+            console.log("您的手机验证码为>>>>> " + phone_code);
+            //按钮灰色
+            $("#get_code").css({
+                "background": "#C1C1C1",
+                "cursor": "no-drop"
+            })
+            $("#get_code").attr("disabled", "disabled");
+            $("#get_code").attr("value", "10s");
+            //定时器
+            let i = 9
+            let timer_one = setInterval(function () {
+                $("#get_code").attr("value", i + "s");
+                i--;
+                if (i < 0) {
+                    $("#get_code").css({
+                        "background": "#E92629",
+                        "cursor": "pointer"
+                    })
+                    $("#get_code").removeAttr("disabled");
+                    $("#get_code").attr("value", "获取验证码");
+                    clearInterval(timer_one);
+                }
+            }, 1000)
+        })
+        $("#check_code").bind("input propertychange", function (event) {
+            if ($("#check_code").val()) {
+                if ($("#check_code").val() == phone_code) {
+                    $("#check_code").next().next().css({
+                        "opacity": "1",
+                        "color": "green"
+                    })
+                    $("#check_code").next().next().text("验证码正确")
+                    check_code_bool = true
+                } else {
+                    $("#check_code").next().next().css({
+                        "opacity": "1",
+                        "color": "red"
+                    })
+                    $("#check_code").next().next().text("验证码不正确")
+                }
+            } else {
+                $("#check_code").next().next().css({
+                    "opacity": "0",
+                })
+            }
+
+        });
+        //协议默认勾选
+        $("#check_3").prop("checked", true);
+        //注册提交
+        $("#btn_reg").click(function () {
+            axios.get(`http://localhost:3000/user/?id=${$("#user_id").val()}`).then(res => {
+                console.log(res.data);
+                if (res.data.length == 0) {
+                    let check3 = $("#check_3[type='checkbox']").is(':checked');
+                    if (user_id_bool && password_1_bool && password_2_bool && check_1_bool &&
+                        check3 &&
+                        check_code_bool) {
+                        axios.post("http://localhost:3000/user", {
+                            id: $("#user_id").val(),
+                            password: $("#password_1").val(),
+                        }).then(function () {
+                            $("#btn_reg").attr("value", "注册成功...正在跳转")
+                            timer = setTimeout(function () {
+                                $(location).attr('href', "login.html");
+                            }, 2000);
+                            console.log("注册成功");
+                        }).catch(function (e) {
+                            console.log(e);
+                        });
+                    } else {
+                        $("#btn_reg").next().css({
+                            "opacity": "1",
+                            "color": "red"
+                        })
+                        $("#btn_reg").next().text("注册失败，请检查您的注册信息")
+                    }
+                } else {
+                    $("#btn_reg").next().css({
+                        "opacity": "1",
+                        "color": "red"
+                    })
+                    $("#btn_reg").next().text("注册失败，已存在此用户")
+                }
+            })
+        })
+
+
+
+    })
+</script>
+
+</html>

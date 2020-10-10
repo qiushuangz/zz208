@@ -1,0 +1,274 @@
+{
+  "products": [
+    {
+      "title": "555444",
+      "price": "555444",
+      "pid": "人类",
+      "pic": [
+        "https://img13.360buyimg.com/pop/s590x470_jfs/t1/114073/22/19597/97079/5f7fc892Ee345ceac/25eb2ed55df98f07.jpg.webp",
+        "https://img13.360buyimg.com/pop/s590x470_jfs/t1/114073/22/19597/97079/5f7fc892Ee345ceac/25eb2ed55df98f07.jpg.webp",
+        "https://img14.360buyimg.com/pop/s590x470_jfs/t1/124044/31/13366/58881/5f6c5854E07a1ead4/f42d2aa59c3ffd57.jpg.webp",
+        "https://img14.360buyimg.com/pop/s590x470_jfs/t1/124044/31/13366/58881/5f6c5854E07a1ead4/f42d2aa59c3ffd57.jpg.webp",
+        "https://img13.360buyimg.com/pop/s590x470_jfs/t1/114073/22/19597/97079/5f7fc892Ee345ceac/25eb2ed55df98f07.jpg.webp"
+      ],
+      "id": "JeIOje9"
+    },
+    {
+      "id": "100",
+      "title": "阿迪达斯官网三叶草 SUPERSTAR男女经典运动鞋FW6384 ",
+      "price": "899",
+      "pid": "男鞋",
+      "pic": [
+        "https://img14.360buyimg.com/n0/jfs/t1/136754/13/11852/70433/5f807053E287cb6cb/47a7cc1722b3d41c.jpg",
+        "https://img14.360buyimg.com/n0/jfs/t1/113980/34/19779/61306/5f807054E7cf69018/e0cb21d0bb83634b.jpg",
+        "https://img14.360buyimg.com/n0/jfs/t1/126122/30/14504/64996/5f807054E43fd6e6d/860aee7c95433770.jpg",
+        "https://img14.360buyimg.com/n0/jfs/t1/126122/30/14504/64996/5f807054E43fd6e6d/860aee7c95433770.jpg",
+        "https://img14.360buyimg.com/n0/jfs/t1/113054/33/19780/65288/5f807054E884c5049/b506a205a64aaa6a.jpg"
+      ]
+    },
+    {
+      "id": "101",
+      "title": "ADIDAS NEO HOOPS 2.0 休闲鞋",
+      "price": "529",
+      "pid": "男鞋",
+      "pic": [
+        "https://img.adidas.com.cn/resources/2018/3/6/15203332827129190_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/3/6/15203332926272960_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/3/6/15203332774601932_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/3/6/15203332774601932_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/3/6/15203332843455898_500X500.jpg"
+      ]
+    },
+    {
+      "id": "102",
+      "title": "CONTINENTAL 80 经典鞋",
+      "price": "799",
+      "pid": "男鞋",
+      "pic": [
+        "https://img.adidas.com.cn/resources/2018/10/8/15389947304935646_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/10/8/1538994724384891_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/10/8/15389947320306056_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/10/8/15389947204364247_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/10/8/15389947188845801_500X500.jpg"
+      ]
+    },
+    {
+      "id": "103",
+      "title": "TERREX SWIFT R2 GTX 户外鞋",
+      "price": "1099",
+      "pid": "男鞋",
+      "pic": [
+        "https://img.adidas.com.cn/resources/2018/10/12/15393271934956774_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/10/12/15393271959374592_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/10/12/15393271806769655_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/10/12/15393271779059274_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2018/10/12/15393271822813553_500X500.jpg"
+      ]
+    },
+    {
+      "id": "251",
+      "title": "HOODIE 运动套头衫",
+      "price": "349",
+      "pid": "女装",
+      "pic": [
+        "https://img.adidas.com.cn/resources/2019/12/4/15754569678596027.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/4/15754569680359031.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/4/15754569681854673.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/4/15754569685289544.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/4/15754569687217074.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff"
+      ]
+    },
+    {
+      "title": "LG CREW 运动卫衣",
+      "price": "4199",
+      "pid": "女装",
+      "pic": [
+        "https://img.adidas.com.cn/resources/2020/1/3/15780426077555747.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/15780426079416174.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/1578042608124284.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/15780426087421542.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/15780426089136961.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff"
+      ],
+      "id": "252"
+    },
+    {
+      "id": "253",
+      "title": "SWEATSHIRT 运动卫衣",
+      "price": "399",
+      "pid": "女装",
+      "pic": [
+        "https://img.adidas.com.cn/resources/2019/12/4/15754569449137828.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/4/15754569450855955.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/4/15754569452498242.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/4/15754569455697279.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/4/15754569461804687.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff"
+      ]
+    },
+    {
+      "id": "300",
+      "title": "MARBLE CRP SST 针织夹克",
+      "price": "549",
+      "pid": "儿童",
+      "pic": [
+        "https://img.adidas.com.cn/resources/2019/2/18/15504890352216620_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2019/2/18/1550489036994533_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2019/2/18/15504890403884288_500X500.jpg",
+        "https://img.adidas.com.cn/resources/2019/2/18/15504891157177691_500X500.gif",
+        "https://img.adidas.com.cn/resources/2019/2/18/15504890420708328_500X500.jpg"
+      ]
+    },
+    {
+      "id": "301",
+      "title": "TEDDY CREW 运动卫衣",
+      "price": "499",
+      "pid": "儿童",
+      "pic": [
+        "https://img.adidas.com.cn/resources/2020/9/9/15996450759492048.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/9/9/15996450768757750.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/9/9/15996450774216680.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/9/9/15996450778451646.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/9/9/15996450759492048.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff"
+      ]
+    },
+    {
+      "id": "302",
+      "title": "INF DY MM JOG DISNEY迪士尼联名系列运动套装",
+      "price": "499",
+      "pid": "儿童",
+      "pic": [
+        "https://img.adidas.com.cn/resources/2019/12/6/1575597092847868.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/6/15755970938648000.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/6/15755970936391986.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/6/15755970943003084.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2019/12/6/15755970946428428.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff"
+      ]
+    },
+    {
+      "id": "303",
+      "title": "SST SET 运动套装",
+      "price": "459",
+      "pid": "儿童",
+      "pic": [
+        "https://img.adidas.com.cn/resources/2020/1/3/15780429340269609.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/15780429345987825.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/15780429348251152.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/15780429352956508.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/157804293594360.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff"
+      ]
+    },
+    {
+      "id": "304",
+      "title": "BG TREFOIL HOOD 运动卫衣",
+      "price": "499",
+      "pid": "儿童",
+      "pic": [
+        "https://img.adidas.com.cn/resources/2020/1/3/15780434239623587.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/1578043424175471.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/15780434246567907.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/15780434248822382.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff",
+        "https://img.adidas.com.cn/resources/2020/1/3/15780434246567907.jpg?x-oss-process=image/resize,m_pad,w_500,h_500,limit_0,color_ffffff"
+      ]
+    }
+  ],
+  "user": [
+    {
+      "password": "444444",
+      "email": "644",
+      "id": "14664444444"
+    },
+    {
+      "id": "17530210685",
+      "password": "88888888"
+    },
+    {
+      "id": "14777777777",
+      "password": "777777"
+    },
+    {
+      "id": "18603789747",
+      "password": "999999",
+      "phone": "",
+      "email": ""
+    },
+    {
+      "id": "12333333333",
+      "password": "333333"
+    },
+    {
+      "id": "15993313709",
+      "password": "333333"
+    },
+    {
+      "id": "1599331370/",
+      "password": "333333"
+    },
+    {
+      "id": "15993313707",
+      "password": "222222"
+    },
+    {
+      "id": "14567777777",
+      "password": "777777"
+    }
+  ],
+  "admin": [
+    {
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "username": "root",
+      "password": "root"
+    }
+  ],
+  "pic_code": [
+    {
+      "picname": "8RNG",
+      "pic": "http://localhost:8080/img/check/8RNG.jpg"
+    },
+    {
+      "picname": "492R",
+      "pic": "http://localhost:8080/img/check/492R.jpg"
+    },
+    {
+      "picname": "A4GH",
+      "pic": "http://localhost:8080/img/check/A4GH.jpg"
+    },
+    {
+      "picname": "CWK2",
+      "pic": "http://localhost:8080/img/check/CWK2.jpg"
+    },
+    {
+      "picname": "EMUY",
+      "pic": "http://localhost:8080/img/check/EMUY.jpg"
+    },
+    {
+      "picname": "GUTE",
+      "pic": "http://localhost:8080/img/check/GYTE.jpg"
+    },
+    {
+      "picname": "KW5P",
+      "pic": "http://localhost:8080/img/check/KW5P.jpg"
+    },
+    {
+      "picname": "MW6F",
+      "pic": "http://localhost:8080/img/check/MW6F.jpg"
+    },
+    {
+      "picname": "SPTQ",
+      "pic": "http://localhost:8080/img/check/SPTQ.jpg"
+    },
+    {
+      "picname": "TE4H",
+      "pic": "http://localhost:8080/img/check/TE4H.jpg"
+    },
+    {
+      "picname": "TPJA",
+      "pic": "http://localhost:8080/img/check/TPJA.jpg"
+    },
+    {
+      "picname": "UXIG",
+      "pic": "http://localhost:8080/img/check/UXIG.jpg"
+    }
+  ]
+}
