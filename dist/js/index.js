@@ -10,8 +10,10 @@ $(".select-con").mousemove(function () {
 $(".select-con").mouseout(function () {
     $(".select-con").hide()
 })
-$(".select_show").children().eq(0).siblings().hide()
 $(".select_show").children().eq(0).show().addClass("show")
+
+$(".select_show").children().eq(0).siblings().hide()
+
 $(".select-top").delegate("ul li", "click", function () {
     $(this).addClass("now_click")
     $(this).siblings().removeClass("now_click")
