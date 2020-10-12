@@ -1,65 +1,11 @@
-  body,
-  html {
-      width: 100%;
-  }
+@import "_header";
+@import "_footer";
 
-  .topbar_full {
-      width: 100%;
-      background-color: #F0F0F0;
+.container {
+    width: 100%;
 
-      .topbar {
-          font-size: 15px;
-          line-height: 46px;
-          width: 1200px;
-          height: 46px;
-          margin: 0 auto;
-          background-color: #F0F0F0;
-          color: #7E7E7E;
-
-          .t_left {
-              display: flex;
-              float: left;
-
-              li {
-                  margin-left: 20px;
-              }
-          }
-
-          .t_right {
-              display: flex;
-              float: right;
-
-              li {
-                  margin: 0 13px 0 13px;
-              }
-          }
-
-          a {
-              color: #7E7E7E;
-
-              &:hover {
-                  color: #C81623;
-              }
-
-          }
-      }
-  }
-
-  //--------top
-  .top_full {
-      width: 100%;
-      background-color: #ebc2c2;
-
-      .top {
-          width: 1200px;
-          background-color: #fff;
-          margin: 0 auto;
-
-          .search_box {
-              .logo {
-                  margin-left: 50px;
-              }
-          }
-      }
-
-  }
+    img {
+        width: 100%;
+        min-width: 1200px;
+    }
+}

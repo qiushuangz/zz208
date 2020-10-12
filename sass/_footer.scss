@@ -1,0 +1,66 @@
+.foot_full {
+    background-color: #FFFFFF;
+    width: 100%;
+    border-top: 1px solid #cecece;
+
+    >.foot {
+        width: 1200px;
+        margin: 0 auto;
+
+        >.foot-long {
+            display: flex;
+            padding: 25px 0;
+            border-bottom: 1px solid #cecece;
+
+            >li {
+                width: 240px;
+                display: flex;
+
+                .foot-long-desc {
+                    margin-left: 15px;
+
+                    .btit {
+                        font-size: 18px;
+                        color: #D61518;
+                        line-height: 40px;
+                    }
+
+                    .stit {
+                        font-size: 13px;
+                        color: #333;
+                    }
+                }
+
+                .foot-long-icon1 {
+                    width: 62px;
+                    height: 62px;
+                    background: url(../img/精灵图.png) no-repeat -270px -105px;
+                }
+
+                .foot-long-icon2 {
+                    width: 62px;
+                    height: 62px;
+                    background: url(../img/精灵图.png) no-repeat -450px -105px;
+                }
+
+                .foot-long-icon3 {
+                    width: 62px;
+                    height: 62px;
+                    background: url(../img/精灵图.png) no-repeat -360px -105px;
+                }
+
+                .foot-long-icon4 {
+                    width: 62px;
+                    height: 62px;
+                    background: url(../img/精灵图.png) no-repeat -540px -105px;
+                }
+
+                .foot-long-icon5 {
+                    width: 62px;
+                    height: 62px;
+                    background: url(../img/精灵图.png) no-repeat -625px -105px;
+                }
+            }
+        }
+    }
+}
