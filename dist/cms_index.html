@@ -270,7 +270,7 @@
                 </div>
                 <div class="modal-body">
                     <ul class="add_list">
-                        <li>商品ID：<br><input type="text"></li>
+                        <!-- <li>商品ID：<br><input type="text"></li> -->
                         <li>商品标题：<br><input type="text"></li>
                         <li>价格（¥）：<br><input type="text"></li>
                         <li>商品分类：<br><input type="text"></li>
@@ -344,11 +344,14 @@
 
         //读取商品-start
         let page_n = 0;
+        let uid = getCookie("uid")
+        let token = getCookie("token")
+
 
         function getshop() {
-            axios.get("http://localhost:3000/products").then(res => {
+            $.get(`http://jx.xuzhixiang.top/ap/api/productlist.php?uid=${uid}`).then(res => {
                 //判断是否有分类或者搜索的数据
-                console.log(data_a, data_b);
+                console.log(res.data);
                 if (data_a && !data_b) {
                     res.data = data_a
                 } else if (!data_a && data_b) {
@@ -403,9 +406,9 @@
                     if (res.data[i]) {
                         let str2 = "";
                         for (let j = 0; j < 5; j++) {
-                            if (res.data[i].pic[j] != "") {
+                            if (res.data[i].pimg[j] != "") {
                                 str2 +=
-                                    `<a href="${res.data[i].pic[j]}" target='_blank'><img src="${res.data[i].pic[j]}"
+                                    `<a href="${res.data[i].pimg[j]}" target='_blank'><img src="${res.data[i].pimg[j]}"
                                     alt="avatar"></a>`
                             }
                         }
@@ -417,16 +420,16 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="td-content product-brand">${res.data[i].title}</div>
+                                        <div class="td-content product-brand">${res.data[i].pname}</div>
                                     </td>
                                     <td>
-                                        <div class="td-content">${res.data[i].id}</div>
+                                        <div class="td-content">${res.data[i].pid}</div>
                                     </td>
                                     <td>
-                                        <div class="td-content pricing"><span class="">¥${res.data[i].price}</span></div>
+                                        <div class="td-content pricing"><span class="">¥${res.data[i].pprice}</span></div>
                                     </td>
                                     <td>
-                                        <div class="td-content pricing"><span class="">${res.data[i].pid}</span>
+                                        <div class="td-content pricing"><span class="">${res.data[i].pdesc}</span>
                                         </div>
                                     </td>
                                     <td>
@@ -440,29 +443,30 @@
                 };
                 $("#conn_list").html(str);
             })
-            pid_li();
+            pdesc_li();
         };
         getshop();
         //读取商品-end
 
 
         //自动创建分类-start
-        function pid_li() {
-            axios.get("http://localhost:3000/products").then(res => {
-                let pid_arr = []
+        function pdesc_li() {
+            $.get(`http://jx.xuzhixiang.top/ap/api/productlist.php?uid=${uid}`).then(res => {
+                // console.log("000", res.data);
+                let pdesc_arr = []
                 for (let i = 0; i < res.data.length; i++) {
-                    if (pid_arr.indexOf(res.data[i].pid) == -1) {
-                        pid_arr.push(res.data[i].pid)
+                    if (pdesc_arr.indexOf(res.data[i].pdesc) == -1) {
+                        pdesc_arr.push(res.data[i].pdesc)
                     }
                 }
-                let pid_str = "<option>全部</option>"
-                for (let j = 0; j < pid_arr.length; j++) {
-                    pid_str += `
-                    <option>${pid_arr[j]}</option>
+                let pdesc_str = "<option>全部</option>"
+                for (let j = 0; j < pdesc_arr.length; j++) {
+                    pdesc_str += `
+                    <option>${pdesc_arr[j]}</option>
                     `
                 }
-                $("#pid_list").html(pid_str)
-                $("#pid_list2").html(pid_str)
+                // $("#pid_list").html(pdesc_str)
+                $("#pid_list2").html(pdesc_str)
             })
         }
         //自动创建分类-end
@@ -471,10 +475,11 @@
 
         //删除商品-start
         $("#conn_list").delegate("tr .del_shop", "click", function () {
-            console.log("del");
-            let delid = $(this).parent().parent().children().eq(2).children().text();
-            let delidh = "http://localhost:3000/products/" + delid;
-            axios.delete(delidh).then(res => {
+            console.log(this);
+            let pid = $(this).parent().parent().children().eq(2).children().text();
+            let delidh =
+                `http://jx.xuzhixiang.top/ap/api/goods/goods-delete.php?pid=${pid}&uid=${uid}&token=${token}`;
+            $.get(delidh).then(res => {
                 $(this).parent().parent().remove()
                 // getshop();
                 console.log("删除成功");
@@ -488,75 +493,82 @@
         let this_edbtn
         $("#conn_list").delegate("tr .myModal_ed", "click", function () {
             console.log($(this));
-            let edid = $(this).parent().parent().children().eq(2).children().text();
-            let edidh = "http://localhost:3000/products/" + edid
-            axios.get(edidh).then(res => {
-                $("#ed_id").text(res.data.id);
-                $("#ed_title").val(res.data.title);
-                $("#ed_price").val(res.data.price);
-                $("#ed_pid").val(res.data.pid);
-                for (let j = 0; j < res.data.pic.length; j++) {
-                    $("#ed_pic").children().eq(j).val(res.data.pic[j])
+            let pid = $(this).parent().parent().children().eq(2).children().text();
+            $.get(`http://jx.xuzhixiang.top/ap/api/detail.php?id=${pid}`).then(res => {
+                $("#ed_id").text(res.data.pid);
+                $("#ed_title").val(res.data.pname);
+                $("#ed_price").val(res.data.pprice);
+                $("#ed_pid").val(res.data.pdesc);
+                for (let j = 0; j < res.data.pimg.length; j++) {
+                    $("#ed_pic").children().eq(j).val(res.data.pimg[j])
                 }
             })
             this_edbtn = $(this).parent().parent().children()
         });
         //02-修改商品(提交)
         $("#ed_shop").click(function () {
-            let putidh = `http://localhost:3000/products/${$("#ed_id").text()}`;
+            let pid = $("#ed_id").text()
+            console.log(pid);
             let arr = [];
             for (let i = 0; i < 5; i++) {
                 arr.push($("#ed_pic").children().eq(i).val())
             }
-            axios.put(putidh, {
-                title: $("#ed_title").val(),
-                price: $("#ed_price").val(),
-                pid: $("#ed_pid").val(),
-                pic: arr
-            }).then(res => {
-                // getshop();
-                $("#close_ed_shop").click()
-                console.log("修改成功");
-                //物理DOM结构修改
-                let str_temp = "";
-                for (let j = 0; j < 5; j++) {
-                    if (arr[j]) {
-                        str_temp += `<a href="${arr[j]}"
+            let pname = $("#ed_title").val()
+            let pprice = $("#ed_price").val()
+            let pdesc = $("#ed_pid").val()
+            let pimg = arr
+            console.log(pid, pname, pprice, pdesc);
+            // uid=${uid}&token=${token}&
+            $.get(
+                    `http://jx.xuzhixiang.top/ap/api/goods/goods-update.php?pid=${pid}&pname=${pname}&pprice=${pprice}&pdesc=${pdesc}&pimg=${pimg}`
+                )
+                .then(res => {
+                    console.log(res.data);
+                    $("#close_ed_shop").click()
+                    console.log("修改成功");
+                    //物理DOM结构修改
+                    let str_temp = "";
+                    for (let j = 0; j < 5; j++) {
+                        if (arr[j]) {
+                            str_temp += `<a href="${arr[j]}"
                       target='_blank'><img src="${arr[j]}" alt="avatar"></a>`
+                        }
                     }
-                }
-                console.log(str_temp);
-                this_edbtn.eq(0).children().html(str_temp)
-                this_edbtn.eq(1).children().text($("#ed_title").val());
-                this_edbtn.eq(3).children().text($("#ed_price").val());
-                this_edbtn.eq(4).children().text($("#ed_pid").val());
-
-
-            });
+                    console.log(str_temp);
+                    this_edbtn.eq(0).children().html(str_temp)
+                    this_edbtn.eq(1).children().text($("#ed_title").val());
+                    this_edbtn.eq(3).children().text($("#ed_price").val());
+                    this_edbtn.eq(4).children().text($("#ed_pid").val());
+                });
         })
         //修改商品-end
 
         //添加商品-start
+
+        console.log($(".add_list input").eq(3));
+        console.log(uid);
         $("#add_shop1").click(function () {
             let arr = [];
-            for (let i = 4; i < $(".add_list input").length; i++) {
+            for (let i = 3; i < $(".add_list input").length; i++) {
                 arr.push($(".add_list input").eq(i).val());
             }
-            axios.post("http://localhost:3000/products", {
-                    id: $(".add_list input").eq(0).val(),
-                    title: $(".add_list input").eq(1).val(),
-                    price: $(".add_list input").eq(2).val(),
-                    pid: $(".add_list input").eq(3).val(),
-                    pic: arr
-                })
+            pimg = arr;
+            pname = $(".add_list input").eq(0).val();
+            pprice = $(".add_list input").eq(1).val();
+            pdesc = $(".add_list input").eq(2).val();
+            $.post(
+                    `http://jx.xuzhixiang.top/ap/api/goods/goods-add.php?uid=${uid}&pimg=${arr}&pname=${pname}&pprice=${pprice}&pdesc=${pdesc}`
+                )
                 .then(function (res) {
                     $(".add_list input").val("");
                     $("#close_add_shop1").click();
                     getshop();
                     console.log("添加成功");
+                    console.log(res);
                 }).catch(function (e) {
                     console.log(e);
                 });
+
         })
         //添加商品-end
 

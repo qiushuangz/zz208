@@ -69,32 +69,33 @@
             }
             //判断登录是否成功
             $("#login").click(function () {
-                axios.get("http://localhost:3000/admin").then(res => {
-                    for (let i = 0; i < res.data.length; i++) {
-                        console.log($("#username").val(), res.data[i].username);
-                        if ($("#username").val() == res.data[i].username && $("#password")
-                            .val() == res.data[i].password) {
-                            console.log("登陆成功");
-                            setcook();
-                            $(location).attr('href', "cms_index.html");
-                            break;
+                axios.get(
+                    `http://jx.xuzhixiang.top/ap/api/login.php?username=${$("#username").val()}&password=${$("#password").val()}`
+                ).then(res => {
+                    console.log(res.data);
+                    if (res.data.code == 1) {
+                        console.log("登陆成功");
+                        let uid = res.data.data.id
+                        let token = res.data.data.token
+                        console.log(uid, token);
+                        if ($("#check_ed").is(':checked')) {
+                            setCookie("username", $("#username").val(), 7);
+                            setCookie("password", $("#password").val(), 7);
+                            setCookie("uid", uid, 7);
+                            setCookie("token", token, 7);
                         } else {
-                            $("#remind").text("登陆失败,请检查您的用户名和密码");
+                            setCookie("username", $("#username").val());
+                            setCookie("password", $("#password").val());
+                            setCookie("uid", uid);
+                            setCookie("token", token);
                         }
-                        console.log(res.data[i]);
-                    }
-                })
-
-                function setcook() {
-                    if ($("#check_ed").is(':checked')) {
-                        setCookie("username", $("#username").val(), 7);
-                        setCookie("password", $("#password").val(), 7);
+                        // $(location).attr('href', "cms_index.html");
                     } else {
-                        setCookie("username", $("#username").val());
-                        setCookie("password", $("#password").val());
+                        $("#remind").text("登陆失败,请检查您的用户名和密码");
                     }
-                }
 
+
+                })
             })
         })
     </script>
