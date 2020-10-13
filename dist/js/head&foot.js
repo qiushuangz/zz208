@@ -1,3 +1,4 @@
+$(".select-con").hide();
 $(".select-tit").mousemove(function () {
     $(".select-con").show()
 })

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header_</title>
+    <script src="./js/jquery.1.11.3.js"></script>
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- <link rel="stylesheet" href="./css/_header.css"> -->
+    <link rel="stylesheet" href="./css/icon/iconfont.css">
+    <script src="./js/axios.js"></script>
+    <script src="./js/cookie.js"></script>
+</head>
+
+<body>
+    <div class="topbar_full">
+        <div class="topbar">
+            <ul class="t_left">
+                <li><a href="">奥特莱斯购物中心</a></li>
+                <li><a href="">商家入驻</a></li>
+            </ul>
+            <ul class="t_right">
+                <li>您好,欢迎来到奥莱购</li>
+                <li><a href="login.html">请登录</a></li>
+                <li><a href="registration.html">免费注册</a></li>
+                <li>
+                    <a href="">
+                        <span class="iconfont icon-gouwuchekong"></span>
+                        购物车
+                        <span id="shop_car">0</span>
+                    </a>
+
+                </li>
+                <li><a href="">订单查询</a></li>
+                <li><a href="">我的收藏</a></li>
+                <li><a href="">帮助中心</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="top_full">
+        <div class="top clean">
+            <div class="search_box clean">
+                <div class="logo"><a href="index.html"><img src="./img/logo.png" alt=""></a></div>
+                <div class="search ">
+                    <input type="text">
+                    <input type="button" value="搜索">
+                </div>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li>
+                        <a href="" style="color: #C81417;">首页
+                            <span style="top: -7px;"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            实体店
+                            <span></span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="">
+                            关于我们
+                            <span></span>
+                        </a>
+
+                    </li>
+                </ul>
+                <div class="select-tit">
+                    <span class="iconfont icon-fenlei"></span>
+                    <span>分类</span>
+                </div>
+                <div class="select-con">
+                    <div class="select-top">
+                        <ul>
+                            <li class="now_click"><a>装柜精品</a></li>
+                            <li><a>奢侈品</a></li>
+                            <li><a>跨境汇</a></li>
+                            <li><a>自营好货</a></li>
+                            <li><a>全部品牌</a></li>
+                        </ul>
+                        <div class="select_show">
+                            <div>
+                                <p class="hot_cl1"><span>热门分类</span></p>
+                                <div class="select-mid">
+                                    <ul>
+                                        <li>
+                                            <p><a href="">时尚女装</a></p>
+                                            <p><a href="">连衣裙</a>><a href="">外套</a>><a href="">衬衫</a></p>
+                                            <a href=""><img src="./img/list_1/01.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">品质男装</a></p>
+                                            <p><a href="">衬衫</a>><a href="">T恤</a>><a href="">裤装</a></p>
+                                            <a href=""><img src="./img/list_1/02.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">运动户外</a></p>
+                                            <p><a href="">男运动服</a>><a href="">女运动服</a>></p>
+                                            <a href=""><img src="./img/list_1/03.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">童鞋童装</a></p>
+                                            <p><a href="">男童装</a>><a href="">女童装</a>><a href="">鞋</a></p>
+                                            <a href=""><img src="./img/list_1/04.jpg" alt=""></a>
+                                        </li>
+
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <p><a href="">内衣/袜子</a></p>
+                                            <p><a href="">文胸</a>><a href="">内裤</a>><a href="">睡衣</a></p>
+                                            <a href=""><img src="./img/list_1/05.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">精品箱包</a></p>
+                                            <p><a href="">女包</a>><a href="">男包</a>><a href="">拉杆箱</a></p>
+                                            <a href=""><img src="./img/list_1/06.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">品质鞋靴</a></p>
+                                            <p><a href="">女单鞋</a>><a href="">男鞋</a>><a href="">运动鞋</a></p>
+                                            <a href=""><img src="./img/list_1/07.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">家居家纺</a></p>
+                                            <p><a href="">套件</a>><a href="">被芯被毯</a></p>
+                                            <a href=""><img src="./img/list_1/08.jpg" alt=""></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <p class="hot_cl1"><span>热门品牌</span></p>
+                                <div class="select-bottom">
+                                    <a href=""><img src="./img/logo_1/01.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/02.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/03.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/04.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/05.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/06.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/07.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/08.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/09.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/10.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/11.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/12.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/13.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/14.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/15.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_1/16.jpg" alt=""></a>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="hot_cl1"><span>热门分类</span></p>
+                                <div class="select-mid">
+                                    <ul>
+                                        <li>
+                                            <p><a href="">男装</a></p>
+                                            <p><a href="">卫衣</a>><a href="">短袖</a>><a href="">POLO衬衫</a></p>
+                                            <a href=""><img src="./img/list_2/01.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">女装</a></p>
+                                            <p><a href="">T恤/卫衣</a>><a href="">裙装</a>><a href="">裤装</a></p>
+                                            <a href=""><img src="./img/list_2/02.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">女式包袋</a></p>
+                                            <p><a href="">斜挎包</a>><a href="">钱包/卡包</a></p>
+                                            <a href=""><img src="./img/list_2/03.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">男士包袋</a></p>
+                                            <p><a href="">手提包</a>><a href="">斜挎包</a>><a href="">手拿包</a></p>
+                                            <a href=""><img src="./img/list_2/04.jpg" alt=""></a>
+                                        </li>
+
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <p><a href="">配饰</a></p>
+                                            <p><a href="">男士皮带</a>><a href="">围巾</a>><a href="">披肩</a></p>
+                                            <a href=""><img src="./img/list_2/05.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">鞋靴</a></p>
+                                            <p><a href="">女士高跟鞋</a>><a href="">女士靴</a></p>
+                                            <a href=""><img src="./img/list_2/06.jpg" alt=""></a>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                                <p class="hot_cl1"><span>热门品牌</span></p>
+                                <div class="select-bottom">
+                                    <a href=""><img src="./img/logo_2/01.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/02.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/03.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/04.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/05.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/06.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/07.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/08.jpg" alt=""></a>
+
+                                </div>
+                            </div>
+                            <div>
+                                <p class="hot_cl1"><span>热门分类</span></p>
+                                <div class="select-mid">
+                                    <ul>
+                                        <li>
+                                            <p><a href="">进口母婴</a></p>
+                                            <p><a href="">婴儿奶粉</a>><a href="">尿裤湿巾</a></p>
+                                            <a href=""><img src="./img/list_3/01.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">美妆个护</a></p>
+                                            <p><a href="">面部护肤</a>><a href="">香水彩妆</a></p>
+                                            <a href=""><img src="./img/list_3/02.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">营养保健</a></p>
+                                            <p><a href="">医药保健</a>><a href="">滋补养生</a>></p>
+                                            <a href=""><img src="./img/list_3/03.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">进口食品</a></p>
+                                            <p><a href="">饮料</a>><a href="">糖果</a>><a href="">饼干</a></p>
+                                            <a href=""><img src="./img/list_3/04.jpg" alt=""></a>
+                                        </li>
+
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <p><a href="">家居家装</a></p>
+                                            <p><a href="">餐饮用具</a>><a href="">清洁日用</a></p>
+                                            <a href=""><img src="./img/list_3/05.jpg" alt=""></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <p class="hot_cl1"><span>热门品牌</span></p>
+                                <div class="select-bottom">
+                                    <a href=""><img src="./img/logo_3/01.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/02.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/03.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/04.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/05.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/06.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/07.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/08.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/09.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/10.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/11.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/12.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/13.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/14.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/15.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/16.jpg" alt=""></a>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="hot_cl1"><span>热门分类</span></p>
+                                <div class="select-mid">
+                                    <ul>
+                                        <li>
+                                            <p><a href="">男装</a></p>
+                                            <p><a href="">卫衣</a>><a href="">短袖</a>><a href="">POLO衬衫</a></p>
+                                            <a href=""><img src="./img/list_2/01.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">女装</a></p>
+                                            <p><a href="">T恤/卫衣</a>><a href="">裙装</a>><a href="">裤装</a></p>
+                                            <a href=""><img src="./img/list_2/02.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">女式包袋</a></p>
+                                            <p><a href="">斜挎包</a>><a href="">钱包/卡包</a></p>
+                                            <a href=""><img src="./img/list_2/03.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">男士包袋</a></p>
+                                            <p><a href="">手提包</a>><a href="">斜挎包</a>><a href="">手拿包</a></p>
+                                            <a href=""><img src="./img/list_2/04.jpg" alt=""></a>
+                                        </li>
+
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <p><a href="">配饰</a></p>
+                                            <p><a href="">男士皮带</a>><a href="">围巾</a>><a href="">披肩</a></p>
+                                            <a href=""><img src="./img/list_2/05.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">鞋靴</a></p>
+                                            <p><a href="">女士高跟鞋</a>><a href="">女士靴</a></p>
+                                            <a href=""><img src="./img/list_2/06.jpg" alt=""></a>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                                <p class="hot_cl1"><span>热门品牌</span></p>
+                                <div class="select-bottom">
+                                    <a href=""><img src="./img/logo_2/01.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/02.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/03.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/04.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/05.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/06.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/07.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_2/08.jpg" alt=""></a>
+
+                                </div>
+                            </div>
+                            <div>
+                                <p class="hot_cl1"><span>热门分类</span></p>
+                                <div class="select-mid">
+                                    <ul>
+                                        <li>
+                                            <p><a href="">进口母婴</a></p>
+                                            <p><a href="">婴儿奶粉</a>><a href="">尿裤湿巾</a></p>
+                                            <a href=""><img src="./img/list_3/01.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">美妆个护</a></p>
+                                            <p><a href="">面部护肤</a>><a href="">香水彩妆</a></p>
+                                            <a href=""><img src="./img/list_3/02.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">营养保健</a></p>
+                                            <p><a href="">医药保健</a>><a href="">滋补养生</a>></p>
+                                            <a href=""><img src="./img/list_3/03.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <p><a href="">进口食品</a></p>
+                                            <p><a href="">饮料</a>><a href="">糖果</a>><a href="">饼干</a></p>
+                                            <a href=""><img src="./img/list_3/04.jpg" alt=""></a>
+                                        </li>
+
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <p><a href="">家居家装</a></p>
+                                            <p><a href="">餐饮用具</a>><a href="">清洁日用</a></p>
+                                            <a href=""><img src="./img/list_3/05.jpg" alt=""></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <p class="hot_cl1"><span>热门品牌</span></p>
+                                <div class="select-bottom">
+                                    <a href=""><img src="./img/logo_3/01.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/02.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/03.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/04.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/05.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/06.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/07.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/08.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/09.jpg" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/10.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/11.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/12.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/13.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/14.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/15.png" alt=""></a>
+                                    <a href=""><img src="./img/logo_3/16.jpg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/head&foot.js"></script>
+
+</html>

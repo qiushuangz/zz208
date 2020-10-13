@@ -1,0 +1,200 @@
+@import "_header";
+@import "_footer";
+
+.conn_full {
+    width: 100%;
+    margin: 50px 0;
+
+    .conn {
+        width: 1200px;
+        margin: 0 auto;
+
+        .shop_box {
+            position: relative;
+            float: left;
+
+            >.b1 {
+                width: 400px;
+                height: 400px;
+                overflow: hidden;
+                position: relative;
+                border: 1px #cecece solid;
+
+                >ul {
+                    width: 5000px;
+                    display: flex;
+                    position: relative;
+
+                    >li {
+                        width: 400px;
+                        height: 400px;
+                        // box-sizing: border-box;
+                        // border: 1px #cecece solid;
+
+                        >img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+
+                .zoom {
+                    width: 200px;
+                    height: 200px;
+                    background-color: rgb(235, 211, 32);
+                    opacity: 0.3;
+                    position: absolute;
+                    top: 0;
+                }
+            }
+
+            >.b2 {
+                display: flex;
+                margin-top: 10px;
+
+                >span {
+                    display: inline-block;
+                    width: 30px;
+                    height: 63px;
+                    font-size: 30px;
+                    border: solid 1px #dedede;
+                    text-align: center;
+                    line-height: 60px;
+                    cursor: pointer;
+                }
+
+                .b2_b {
+                    width: 340px;
+                    overflow: hidden;
+                    border: solid 1px #dedede;
+                    border-left: none;
+                    border-right: none;
+
+                    >ul {
+                        display: flex;
+                        width: 900px;
+                        position: relative;
+
+                        >li {
+                            width: 60px;
+                            height: 60px;
+                            border-right: 1px solid #cecece;
+                            cursor: pointer;
+                            // margin-left: 15px;
+
+                            >img {
+                                width: 60px;
+                                height: 60px;
+                                box-sizing: border-box;
+
+                            }
+                        }
+
+                        .now_click {
+                            border: solid 1px #e90606;
+                        }
+                    }
+                }
+
+            }
+
+            >.b3 {
+                width: 400px;
+                height: 400px;
+                border: solid 1px #dedede;
+                position: absolute;
+                top: 0;
+                left: 400px;
+                overflow: hidden;
+
+                >img {
+                    width: 800px;
+                    height: 800px;
+                    position: absolute;
+                }
+            }
+        }
+
+        .add_car {
+            width: 750px;
+            float: right;
+
+            >p {
+                font-size: 20px;
+                // color: #F0F0F0;
+                line-height: 50px;
+            }
+
+            >.price_1 {
+                width: 500px;
+                height: 60px;
+                background-color: #F7F7F7;
+
+                :nth-child(1) {
+                    font-size: 16px;
+                    color: #333333;
+                    line-height: 60px;
+                    // text-indent: 50px;
+
+                    margin-left: 20px;
+                }
+
+                :nth-child(2) {
+                    font-size: 25px;
+                    margin-left: 10px;
+                    color: #e90606;
+                }
+            }
+
+            .addshop_1 {
+                margin-top: 20px;
+
+                .num_0 {
+                    display: inline-block;
+                    margin-right: 20px;
+                }
+
+                .num_1 {
+                    display: inline-block;
+
+                    input {
+                        width: 30px;
+                        height: 29px;
+                        border: solid 1px #cecece;
+                        position: relative;
+                        top: -3px;
+                        text-align: center;
+                        line-height: 29px;
+                        z-index: -5;
+
+                    }
+
+                    span {
+                        display: inline-block;
+                        width: 31px;
+                        height: 31px;
+                        border: solid 1px #cecece;
+                        line-height: 31px;
+                        font-size: 19px;
+                        text-align: center;
+                        cursor: pointer;
+
+                    }
+                }
+
+                .num_2 {
+                    margin-top: 20px;
+                    width: 180px;
+                    height: 40px;
+                    background-color: #FF3344;
+                    line-height: 40px;
+                    color: white;
+                    font-size: 15px;
+                    border-radius: 5px;
+                    text-align: center;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
