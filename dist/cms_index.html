@@ -175,6 +175,8 @@
                             </div>
                         </a>
                     </li>
+                    <span>注意：由于老师接口里面pimg属性有字符串长度限制，添加图片时候尽量把网络图网址（一般都是长网址）转换为短网址。网图尽量选择京东、淘宝的，不会提示跳转风险。转短网址地址=><a
+                            href="https://sina.lt/" target="black">https://sina.lt/</a></span>
                 </ul>
             </div>
             <ul class="col-xs-10 conntxt" style="background-color: #FFFFFF;">
@@ -209,7 +211,7 @@
 
 
                     <div class="input-group " style="margin-top: 10px;margin-left: 30px;">
-                        <input type="text" class="form-control" id="search_val">
+                        <input type="text" class="form-control" id="search_val" value="老师接口暂无搜索与分类功能">
                         <span class="input-group-addon btn btn-primary" id="search_btn"
                             style="background-color: #337AB7;color: white;">搜索</span>
                     </div>
@@ -336,9 +338,10 @@
         }
         //注销登录状态
         $("#del_login").click(function () {
-            console.log("ppp");
             removeCookie("username");
             removeCookie("password");
+            removeCookie("uid");
+            removeCookie("token");
             $(location).attr('href', "cms_login.html");
         })
 
@@ -367,7 +370,7 @@
                     }
                     res.data = data_arr
                 }
-                console.log(res.data);
+
                 //自动设置页码
                 let page_max = Math.ceil(res.data.length / 5);
                 let str_page = "";
@@ -402,6 +405,13 @@
 
                 //根据页码读取数据
                 let str = "";
+                console.log(res.data.pimg)
+                //对img进行处理
+                for (let p = 0; p < res.data.length; p++) {
+                    res.data[p].pimg = res.data[p].pimg.split(",")
+                }
+                /////
+
                 for (let i = page_n * 5; i < (page_n * 5) + 5; i++) {
                     if (res.data[i]) {
                         let str2 = "";
@@ -495,12 +505,16 @@
             console.log($(this));
             let pid = $(this).parent().parent().children().eq(2).children().text();
             $.get(`http://jx.xuzhixiang.top/ap/api/detail.php?id=${pid}`).then(res => {
+                res.data.pimg = res.data.pimg.split(",")
+                console.log(res.data.pimg)
                 $("#ed_id").text(res.data.pid);
                 $("#ed_title").val(res.data.pname);
                 $("#ed_price").val(res.data.pprice);
                 $("#ed_pid").val(res.data.pdesc);
+                console.log(res.data.pimg)
                 for (let j = 0; j < res.data.pimg.length; j++) {
                     $("#ed_pic").children().eq(j).val(res.data.pimg[j])
+                    console.log(j)
                 }
             })
             this_edbtn = $(this).parent().parent().children()
@@ -537,7 +551,7 @@
                     console.log(str_temp);
                     this_edbtn.eq(0).children().html(str_temp)
                     this_edbtn.eq(1).children().text($("#ed_title").val());
-                    this_edbtn.eq(3).children().text($("#ed_price").val());
+                    this_edbtn.eq(3).children().text("¥" + $("#ed_price").val());
                     this_edbtn.eq(4).children().text($("#ed_pid").val());
                 });
         })
@@ -553,6 +567,7 @@
                 arr.push($(".add_list input").eq(i).val());
             }
             pimg = arr;
+            console.log(arr)
             pname = $(".add_list input").eq(0).val();
             pprice = $(".add_list input").eq(1).val();
             pdesc = $(".add_list input").eq(2).val();
