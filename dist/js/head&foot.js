@@ -1,7 +1,5 @@
 $(function () {
-
-
-    $(".select-con").hide();
+    // $(".select-con").hide();
     $(".select-tit").mousemove(function () {
         $(".select-con").show()
     })
@@ -41,5 +39,24 @@ $(function () {
         removeCookie("token");
         $(location).attr('href', "");
     })
+    if (getCookie("uid")) {
+        let uid = getCookie("uid")
+        $.get(`http://jx.xuzhixiang.top/ap/api/cart-list.php?id=${uid}`).then(res => {
+            // console.log(res.data)
+            let car_num = 0
+            for (let j = 0; j < res.data.length; j++) {
+
+                car_num += res.data[j].pnum - 0
+            }
+            // console.log(car_num)
+            $("#shop_car").text(car_num)
+        })
+        // $(".select-con>a") 
+    }
+
+
+
+
+
 
 })

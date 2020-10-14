@@ -13,14 +13,40 @@
         .top {
             background-color: #F5F5F5;
             height: 50px;
-            display: flex;
+            // display: flex;
             justify-content: space-between;
 
             span {
-                display: block;
+                // display: block;
                 line-height: 50px;
                 font-size: 17px;
+
+                :nth-child(2) {
+                    color: red;
+                }
             }
+
+            :nth-child(2) {
+                margin-left: 250px;
+            }
+
+            :nth-child(3) {
+                margin-left: 250px;
+            }
+
+            :nth-child(4) {
+                margin-left: 150px;
+            }
+
+            :nth-child(5) {
+                margin-left: 120px;
+            }
+
+            :nth-child(6) {
+                margin-left: 130px;
+            }
+
+
         }
 
         >ul {
@@ -60,13 +86,17 @@
                 }
 
                 .pprice {
-                    width: 200px;
-                    font-size: 18px;
-                    color: red;
+                    width: 180px;
+                    font-size: 15px;
+
+                    // color: red;
+                    &:before {
+                        content: "¥";
+                    }
                 }
 
                 .num {
-                    width: 150px;
+                    width: 180px;
                     font-size: 20px;
 
                     span {
@@ -92,35 +122,80 @@
 
                 .much {
                     width: 180px;
-                    font-size: 18px;
+                    font-size: 15px;
                     color: red;
+
+                    &:before {
+                        content: "¥";
+                    }
                 }
 
                 .del_this {
                     cursor: pointer;
+
+                    &:hover {
+                        color: red;
+                    }
                 }
 
             }
         }
 
         .bottom {
-            display: flex;
+            width: 1200px;
+
             background-color: #F5F5F5;
+            justify-content: space-around;
 
             .choose {
+                display: inline-block;
+                width: 200px;
                 line-height: 60px;
+                font-size: 17PX;
+
+                .choose_1 {
+                    margin: 0;
+                    font-size: 20px;
+                }
             }
 
-            span {
-                font-size: 18px;
+            .choose22 {
+                display: inline-block;
+                width: 200px;
+                line-height: 60px;
+                font-size: 20PX;
+                margin-left: 650px;
+
+                .shopall {
+                    line-height: 60px;
+                    color: red;
+                    font-size: 20px;
+
+                    &:before {
+                        content: "¥";
+                    }
+
+                    // margin-left: 50px;
+
+                }
+
+                // span {
+                //     line-height: 60px;
+
+                //     font-size: 18px;
+                //     margin-left: 30px;
+
+                // }
             }
 
-            .shopall {
-                font-size: 20px;
-            }
+
 
             .jiesuan {
-                margin: 20px 0;
+
+                float: right;
+                margin-right: 50px;
+
+                margin: 10px 0;
                 float: right;
                 width: 100px;
                 height: 40px;
@@ -131,8 +206,6 @@
                 line-height: 40px;
                 text-align: center;
                 color: white;
-                // position: relative;
-                // top: -40px;
             }
         }
     }

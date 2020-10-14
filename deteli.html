@@ -119,6 +119,8 @@
     let pid = location.search.replace("?", "")
     console.log(pid);
 
+
+
     $.get(`http://jx.xuzhixiang.top/ap/api/detail.php?id=${pid}`).then(res => {
         console.log(res.data);
         res.data.pimg = res.data.pimg.split(",")
@@ -225,18 +227,24 @@
             }
         });
         //加入购物车
+
         let uid = getCookie("uid")
+
         $(".num_2").click(function () {
-            $.get(
-                    `http://jx.xuzhixiang.top/ap/api/add-product.php?uid=${uid}&pid=${pid}&pnum=${$(".num_1").children().eq(1).val()}`
-                )
-                .then(res => {
-                    console.log(res);
-                    $(location).attr('href', "car.html");
+            if (getCookie("uid")) {
+                $.get(
+                        `http://jx.xuzhixiang.top/ap/api/add-product.php?uid=${uid}&pid=${pid}&pnum=${$(".num_1").children().eq(1).val()}`
+                    )
+                    .then(res => {
+                        console.log(res);
+                        $(location).attr('href', "car.html");
 
-                })
+                    })
+            } else {
+                $(location).attr('href', "login.html");
+            }
+
         })
-
 
     }
 </script>

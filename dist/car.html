@@ -24,17 +24,18 @@
                 <span>单价</span>
                 <span>数量</span>
                 <span>小计</span>
+                <span>操作</span>
             </div>
             <ul id="cartul">
 
             </ul>
             <div class="bottom clean">
                 <div class="choose">
-                    已选择<span class="choose_1">88</span>件
+                    已选择<span class="choose_1">0</span>件
                 </div>
-                <span>总价：</span>
+                <div class="choose22">总价：<span class="shopall">0</span></div>
 
-                <div class="shopall">0</div>
+
                 <div class="jiesuan">
                     去结算
                 </div>
@@ -51,19 +52,21 @@
 
         $("header").load("header.html");
         $("footer").load("footer.html");
-
+        //////////////
+        if (!getCookie("uid")) {
+            $(location).attr('href', "login.html");
+        }
+        ////////////
         // let cart = new Cart();
         // cart.showList("cartul");
 
         let uid = getCookie("uid")
 
         $.get(`http://jx.xuzhixiang.top/ap/api/cart-list.php?id=${uid}`).then(res => {
-            console.log(res.data);
             str = ""
             for (let i = 0; i < res.data.length; i++) {
 
                 res.data[i].pimg = res.data[i].pimg.split(",")
-                console.log(res.data[i].pimg);
                 str += `
                 <li data_id="${res.data[i].pid}">
                     <input type="checkbox" class="check_li">
@@ -87,11 +90,12 @@
             $("#cartul").html(str)
         }).then(function () {
             //购物车加减商品
-            parseInt("￥23")
-            console.log($(".num").children().eq(2));
             let k = $(".num").children().eq(1).val();
 
             $(".jian").click(function () {
+
+
+
                 console.log(this);
                 let k = $(this).next().val();
                 k = k - 1
@@ -105,14 +109,11 @@
                 $.get(`http://jx.xuzhixiang.top/ap/api/cart-update-num.php?uid=${uid}&pid=${
                 $(this).parent().parent().attr("data_id")}&pnum=${k}`)
                     .then(res => {
-                        console.log(res.data);
-
+                        // console.log(res.data);
+                        all_n()
                     })
-                // all_n()
-
             })
             $(".jia").click(function () {
-                // console.log(this);
                 let j = $(this).prev().val() - 0;
                 j = j + 1
                 $(this).prev().val(j)
@@ -122,78 +123,91 @@
                    $(this).parent().parent().attr("data_id")}&pnum=${j}`)
                     .then(res => {
                         console.log(res.data);
-
+                        all_n()
                     })
-                // all_n()
-
             })
 
 
             $(".del_this").click(function () {
-                // console.log(this);
-                // $(this).parent().attr("data_id")
-                console.log($(this).parent());
-                // console.log($(this).parent().attr("data_id"));
                 $.get(
                         `http://jx.xuzhixiang.top/ap/api/cart-delete.php?uid=${uid}&pid=${$(this).parent().attr("data_id")}`
                     )
                     .then(res => {
                         console.log(res);
                         $(this).parent().remove()
+                        all_n()
                     })
-
 
             })
             ///得到总价
-            console.log($("#cartul").children());
-            console.log($(".check_li").children().eq(0).get()[0]);
+            console.log($(".check_li").eq(1).parent().find(".pprice").text() - 0);
 
             function getallprice() {
                 let sum = 0;
-
-                for (let i = 0; i < $("#cartul").children().length; i++) {
-                    if ($("#cartul").children().eq(0).checked) {
-                        sum += +this.much[i].innerText
+                let sum_li = 0;
+                for (let i = 0; i < $(".check_li").length; i++) {
+                    if ($(".check_li").eq(i).is(':checked')) {
+                        let shop_n = $(".check_li").eq(i).parent().find(".num").find("input").val() - 0
+                        sum_li += shop_n
+                        sum += shop_n * ($(".check_li").eq(i).parent().find(".pprice").text() - 0)
                     }
+
                 }
-                this.allprice[0].innerText = sum;
+                $(".choose_1").text(sum_li)
+                $(".shopall").text(sum)
+                console.log(sum_li, sum)
             }
+            // getallprice();
+
+            //点击复选框运行
+            $(".check_li").click(function () {
+                getallprice();
+            })
+
+
 
             //1.1 点击全选复选框，让单个复选框全部选中
-            ckall.onclick = () => {
-                for (let i = 0; i < this.ack.length; i++) {
-                    this.ack[i].checked = ckall.checked;
+            $('#checkall').click(function () {
+                if ($('#checkall').is(':checked')) {
+                    for (let i = 0; i < $(".check_li").length; i++) {
+                        $(".check_li").eq(i).prop("checked", true);
+                    }
+                    getallprice();
+                } else {
+                    for (let i = 0; i < $(".check_li").length; i++) {
+                        $(".check_li").eq(i).prop("checked", false);
+                    }
+                    getallprice();
                 }
-                this.getallprice()
-            }
+            })
+
             //1.2 点击任意复选框，取消全选
-            for (let i = 0; i < this.ack.length; i++) {
-                this.ack[i].onclick = () => {
+            for (let i = 0; i < $(".check_li").length; i++) {
+                $(".check_li").eq(i).click(function () {
                     let conn = 0;
-                    for (let j = 0; j < this.ack.length; j++) {
-                        if (this.ack[j].checked) {
-                            conn++
+                    for (let j = 0; j < $(".check_li").length; j++) {
+                        if ($(".check_li").eq(j).is(':checked')) {
+                            conn++;
                         }
                     }
-                    if (conn == this.ack.length) {
-                        ckall.checked = true;
+                    if (conn == $(".check_li").length) {
+                        $('#checkall').prop("checked", true);
                     } else {
-                        ckall.checked = false;
+                        $('#checkall').prop("checked", false);
                     }
-                    this.getallprice()
-                }
+                    getallprice();
+                })
             }
 
 
-
+            //导航栏购物车刷新
             function all_n() {
                 let nnn = 0
                 for (let j = 0; j < $(".num>input").length; j++) {
                     nnn += $(".num>input").eq(j).val() - 0
                 }
-                $("#all_pro").text(nnn)
+                $("#shop_car").text(nnn)
             }
-
         })
 
 
