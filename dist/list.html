@@ -21,8 +21,8 @@
 
             </div>
             <div class="select_2 ">
-                <ul>
-                    <li>
+                <ul id="innter_str">
+                    <!-- <li>
                         <div class="p1 ">
                             <img src="https://mercrt-fd.zol-img.com.cn/t_s800x800f/g4/M03/00/0D/Cg-4WlHRS0yIfdoaAAIkAUjvtRgAAKCmQDCTQoAAiQZ034.jpg"
                                 alt="">
@@ -250,13 +250,14 @@
                         <div class="p3">¥369</div>
                         <div class="p4">笔记本电脑</div>
                     </li>
-
+ -->
 
                 </ul>
             </div>
         </div>
     </div>
     <footer></footer>
+
 </body>
 <script>
     $("header").load("header.html");
@@ -272,11 +273,58 @@
     //     $(".p1").children().attr("src", $(this).attr("src"))
 
     // })
-    $(".p2").delegate("img", "click", function () {
-        $(this).addClass("now_cl");
-        $(this).siblings().removeClass("now_cl");
-        // $(".p1").children().attr("src", $(this).attr("src"))
-        $(this).parent().prev().children().attr("src", $(this).attr("src"))
+
+    let uid = getCookie("uid")
+    //43391 43288
+    $.get(`http://jx.xuzhixiang.top/ap/api/productlist.php?uid=43391`).then(res => {
+        console.log(res.data);
+
+        let str = "";
+        //对img进行处理
+        for (let p = 0; p < res.data.length; p++) {
+            res.data[p].pimg = res.data[p].pimg.split(",")
+        } /////
+
+
+        for (let i = 0; i < res.data.length; i++) {
+
+            //对img小图进行处理
+            let str2 = ""
+            for (let j = 0; j < res.data[i].pimg.length; j++) {
+                if (res.data[i].pimg[j]) {
+                    str2 += `
+                            <img class="now_cl_" src="${res.data[i].pimg[j]}" alt="">
+                            `
+                }
+            }
+            /////
+            str += `
+             <li>
+                 <div class="p1 ">
+                    <a href="http://localhost:8080/deteli.html?${res.data[i].pid}">
+                     <img src="${res.data[i].pimg[0]}"
+                         alt="" data_id="${res.data[i].pid}">
+                    </a>   
+                 </div>
+                 <div class="p2">
+                     ${str2}
+                 </div>
+                 <div class="p3">¥${res.data[i].pprice}</div>
+                 <div class="p4"><a href="http://localhost:8080/deteli.html?${res.data[i].pid}">${res.data[i].pname}
+                 </a> </div>
+             </li>      
+            `
+        }
+
+        $("#innter_str").html(str);
+    }).then(function () {
+
+        $(".p2").delegate("img", "click", function () {
+            $(this).addClass("now_cl");
+            $(this).siblings().removeClass("now_cl");
+            $(this).parent().prev().children().children().attr("src", $(this).attr("src"))
+        })
+        $(".p2").children().eq(0).click()
     })
 </script>
 

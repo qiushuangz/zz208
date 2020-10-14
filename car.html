@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车页</title>
+    <script src="./js/jquery.1.11.3.js"></script>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/car.css">
+    <link rel="stylesheet" href="./css/icon/iconfont.css">
+    <script src="./js/axios.js"></script>
+    <script src="./js/cookie.js"></script>
+
+</head>
+
+<body>
+    <header></header>
+    <div class="car_full">
+        <div class="car">
+            <div class="top">
+                <span><input type="checkbox" id="checkall">全选</span>
+                <span>商品</span>
+                <span>单价</span>
+                <span>数量</span>
+                <span>小计</span>
+            </div>
+            <ul id="cartul">
+
+            </ul>
+            <div class="bottom clean">
+                <div class="choose">
+                    已选择<span class="choose_1">88</span>件
+                </div>
+                <span>总价：</span>
+
+                <div class="shopall">0</div>
+                <div class="jiesuan">
+                    去结算
+                </div>
+                <!-- <span id="all_pro"></span> -->
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+</body>
+<script src="./js/car.js"></script>
+<script>
+    $(function () {
+
+
+        $("header").load("header.html");
+        $("footer").load("footer.html");
+
+        // let cart = new Cart();
+        // cart.showList("cartul");
+
+        let uid = getCookie("uid")
+
+        $.get(`http://jx.xuzhixiang.top/ap/api/cart-list.php?id=${uid}`).then(res => {
+            console.log(res.data);
+            str = ""
+            for (let i = 0; i < res.data.length; i++) {
+
+                res.data[i].pimg = res.data[i].pimg.split(",")
+                console.log(res.data[i].pimg);
+                str += `
+                <li data_id="${res.data[i].pid}">
+                    <input type="checkbox" class="check_li">
+                    <a href="http://localhost:8080/deteli.html?${res.data[i].pid}" class="pimg">
+                        <img
+                            src="${res.data[i].pimg[0]}">
+                    </a>
+                    <p class="pname">
+                        <a href="http://localhost:8080/deteli.html?${res.data[i].pid}">
+                      ${res.data[i].pname} </a>
+                    </p>
+                    <p class="pprice">${res.data[i].pprice}</p>
+                    <div class="num"><span class="jian">-</span><input t
+                        ype="text" value="${res.data[i].pnum}"><span class="jia">+</span>
+                    </div>
+                    <div class="much">${res.data[i].pnum*res.data[i].pprice}</div>
+                    <div class="del_this">删除</div>
+                </li>
+                `
+            }
+            $("#cartul").html(str)
+        }).then(function () {
+            //购物车加减商品
+            parseInt("￥23")
+            console.log($(".num").children().eq(2));
+            let k = $(".num").children().eq(1).val();
+
+            $(".jian").click(function () {
+                console.log(this);
+                let k = $(this).next().val();
+                k = k - 1
+                if (k <= 0) {
+                    k = 1
+                }
+                $(this).next().val(k)
+                $(this).parent().next().text(k * parseInt($(this).parent().prev().text()))
+                console.log(k, parseInt($(this).parent().prev().text()));
+                ////////////////////
+                $.get(`http://jx.xuzhixiang.top/ap/api/cart-update-num.php?uid=${uid}&pid=${
+                $(this).parent().parent().attr("data_id")}&pnum=${k}`)
+                    .then(res => {
+                        console.log(res.data);
+
+                    })
+                // all_n()
+
+            })
+            $(".jia").click(function () {
+                // console.log(this);
+                let j = $(this).prev().val() - 0;
+                j = j + 1
+                $(this).prev().val(j)
+                $(this).parent().next().text(j * parseInt($(this).parent().prev().text()))
+                ///////////////////////////
+                $.get(`http://jx.xuzhixiang.top/ap/api/cart-update-num.php?uid=${uid}&pid=${
+                   $(this).parent().parent().attr("data_id")}&pnum=${j}`)
+                    .then(res => {
+                        console.log(res.data);
+
+                    })
+                // all_n()
+
+            })
+
+
+            $(".del_this").click(function () {
+                // console.log(this);
+                // $(this).parent().attr("data_id")
+                console.log($(this).parent());
+                // console.log($(this).parent().attr("data_id"));
+                $.get(
+                        `http://jx.xuzhixiang.top/ap/api/cart-delete.php?uid=${uid}&pid=${$(this).parent().attr("data_id")}`
+                    )
+                    .then(res => {
+                        console.log(res);
+                        $(this).parent().remove()
+                    })
+
+
+            })
+            ///得到总价
+            console.log($("#cartul").children());
+            console.log($(".check_li").children().eq(0).get()[0]);
+
+            function getallprice() {
+                let sum = 0;
+
+                for (let i = 0; i < $("#cartul").children().length; i++) {
+                    if ($("#cartul").children().eq(0).checked) {
+                        sum += +this.much[i].innerText
+                    }
+                }
+                this.allprice[0].innerText = sum;
+            }
+
+            //1.1 点击全选复选框，让单个复选框全部选中
+            ckall.onclick = () => {
+                for (let i = 0; i < this.ack.length; i++) {
+                    this.ack[i].checked = ckall.checked;
+                }
+                this.getallprice()
+            }
+            //1.2 点击任意复选框，取消全选
+            for (let i = 0; i < this.ack.length; i++) {
+                this.ack[i].onclick = () => {
+                    let conn = 0;
+                    for (let j = 0; j < this.ack.length; j++) {
+                        if (this.ack[j].checked) {
+                            conn++
+                        }
+                    }
+                    if (conn == this.ack.length) {
+                        ckall.checked = true;
+                    } else {
+                        ckall.checked = false;
+                    }
+                    this.getallprice()
+                }
+            }
+
+
+
+            function all_n() {
+                let nnn = 0
+                for (let j = 0; j < $(".num>input").length; j++) {
+                    nnn += $(".num>input").eq(j).val() - 0
+                }
+                $("#all_pro").text(nnn)
+            }
+
+        })
+
+
+
+    })
+</script>
+
+</html>

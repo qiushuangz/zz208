@@ -118,106 +118,152 @@
     </div>
 </body>
 <script>
+    // $(function () {
+
+    //     //验证账号格式-start
+    //     let user_id_bool = true;
+    //     // $("#user_id").bind("input propertychange", function (event) {
+    //     //     var ck_user_id = /^1\d{10}$/;
+
+    //     //     if ($("#user_id").val()) {
+    //     //         if (ck_user_id.test($("#user_id").val())) {
+    //     //             $("#user_id").next().css({
+    //     //                 "opacity": "1",
+    //     //                 "color": "green"
+    //     //             })
+    //     //             $("#user_id").next().text("格式正确")
+    //     //             user_id_bool = true
+    //     //         } else {
+    //     //             $("#user_id").next().css({
+    //     //                 "opacity": "1",
+    //     //                 "color": "red"
+    //     //             })
+    //     //             $("#user_id").next().text("手机号码格式不正确")
+    //     //         }
+    //     //     } else {
+    //     //         $("#user_id").next().css({
+    //     //             "opacity": "0",
+    //     //         })
+    //     //     }
+
+    //     // });
+    //     //验证账号格式-end
+
+
+
+    //     //注册提交-start
+    //     $("#btn_login").click(function () {
+    //         if (user_id_bool) {
+    //             axios.get(`http://localhost:3000/user?id=${$("#user_id").val()}`).then(res => {
+    //                 if (res.data.length == 1) {
+    //                     if (res.data[0].password == $("#password_1").val() && res.data.length ==
+    //                         1) {
+    //                         console.log("登陆成功");
+    //                         set_ce();
+    //                         $("#btn_login").attr("value", "登陆成功..正在跳转")
+    //                         timer = setTimeout(function () {
+    //                             $(location).attr('href', "index.html");
+    //                             console.log("666");
+    //                         }, 2000);
+    //                     } else {
+    //                         $("#password_1").next().text("登录失败，请检查您的账户密码")
+    //                         $("#password_1").next().css({
+    //                             "opacity": "1",
+    //                             "color": "red"
+    //                         })
+    //                     }
+    //                 } else {
+    //                     $("#password_1").next().text("账户不存在，请注册")
+    //                     $("#password_1").next().css({
+    //                         "opacity": "1",
+    //                         "color": "red"
+    //                     })
+    //                 }
+    //             }).catch(function (e) {
+    //                 console.log(e);
+    //             });
+
+    //         } else {
+    //             $("#password_1").next().text("请正确填写用户信息")
+    //             $("#password_1").next().css({
+    //                 "opacity": "1",
+    //                 "color": "red"
+    //             })
+    //         }
+    //     })
+    //     //注册提交-end
+
+
+    //     //登陆成功设置cookie-start
+    //     function set_ce() {
+    //         console.log(rember_pw);
+    //         if ($("#rember_pw").is(':checked')) {
+    //             setCookie("user_id", $("#user_id").val(), 7);
+    //             setCookie("user_psd", $("#password_1").val(), 7);
+    //             console.log("aa");
+    //         } else {
+    //             setCookie("user_id", $("#user_id").val());
+    //             setCookie("user_psd", $("#password_1").val());
+    //             console.log("bb");
+    //         }
+    //     }
+    //     //登陆成功设置cookie-end
+
+
+    //     //如果之前存过，取出来放到文本框里-start
+    //     if (getCookie("user_id")) {
+    //         user_id_bool = true
+    //         $("#user_id").val(getCookie("user_id"));
+    //         $("#password_1").val(getCookie("user_psd"));
+    //         $("#rember_pw").prop("checked", true);
+    //     }
+    //     //-end
+    // })
+
     $(function () {
-
-        //验证账号格式-start
-        let user_id_bool = false;
-        $("#user_id").bind("input propertychange", function (event) {
-            var ck_user_id = /^1\d{10}$/;
-
-            if ($("#user_id").val()) {
-                if (ck_user_id.test($("#user_id").val())) {
-                    $("#user_id").next().css({
-                        "opacity": "1",
-                        "color": "green"
-                    })
-                    $("#user_id").next().text("格式正确")
-                    user_id_bool = true
+        //如果之前存过，取出来放到文本框里
+        if (getCookie("username")) {
+            $("#user_id").val(getCookie("username"));
+            $("#password_1").val(getCookie("password"));
+            $("#rember_pw").prop("checked", true);
+        }
+        //判断登录是否成功
+        $("#btn_login").click(function () {
+            axios.get(
+                `http://jx.xuzhixiang.top/ap/api/login.php?username=${$("#user_id").val()}&password=${$("#password_1").val()}`
+            ).then(res => {
+                console.log(res.data);
+                if (res.data.code == 1) {
+                    console.log("登陆成功");
+                    let uid = res.data.data.id
+                    let token = res.data.data.token
+                    console.log(uid, token);
+                    if ($("#rember_pw").is(':checked')) {
+                        setCookie("username", $("#user_id").val(), 7);
+                        setCookie("password", $("#password_1").val(), 7);
+                        setCookie("uid", uid, 7);
+                        setCookie("token", token, 7);
+                    } else {
+                        setCookie("username", $("#user_id").val());
+                        setCookie("password", $("#password_1").val());
+                        setCookie("uid", uid);
+                        setCookie("token", token);
+                    }
+                    $("#btn_login").attr("value", "登陆成功..正在跳转")
+                    timer = setTimeout(function () {
+                        $(location).attr('href', "index.html");
+                    }, 2000);
                 } else {
-                    $("#user_id").next().css({
+                    $("#password_1").next().text("登录失败，请检查您的账户密码")
+                    $("#password_1").next().css({
                         "opacity": "1",
                         "color": "red"
                     })
-                    $("#user_id").next().text("手机号码格式不正确")
                 }
-            } else {
-                $("#user_id").next().css({
-                    "opacity": "0",
-                })
-            }
-
-        });
-        //验证账号格式-end
 
 
-
-        //注册提交-start
-        $("#btn_login").click(function () {
-            if (user_id_bool) {
-                axios.get(`http://localhost:3000/user?id=${$("#user_id").val()}`).then(res => {
-                    if (res.data.length == 1) {
-                        if (res.data[0].password == $("#password_1").val() && res.data.length ==
-                            1) {
-                            console.log("登陆成功");
-                            set_ce();
-                            $("#btn_login").attr("value", "登陆成功..正在跳转")
-                            timer = setTimeout(function () {
-                                $(location).attr('href', "index.html");
-                                console.log("666");
-                            }, 2000);
-                        } else {
-                            $("#password_1").next().text("登录失败，请检查您的账户密码")
-                            $("#password_1").next().css({
-                                "opacity": "1",
-                                "color": "red"
-                            })
-                        }
-                    } else {
-                        $("#password_1").next().text("账户不存在，请注册")
-                        $("#password_1").next().css({
-                            "opacity": "1",
-                            "color": "red"
-                        })
-                    }
-                }).catch(function (e) {
-                    console.log(e);
-                });
-
-            } else {
-                $("#password_1").next().text("请正确填写用户信息")
-                $("#password_1").next().css({
-                    "opacity": "1",
-                    "color": "red"
-                })
-            }
+            })
         })
-        //注册提交-end
-
-
-        //登陆成功设置cookie-start
-        function set_ce() {
-            console.log(rember_pw);
-            if ($("#rember_pw").is(':checked')) {
-                setCookie("user_id", $("#user_id").val(), 7);
-                setCookie("user_psd", $("#password_1").val(), 7);
-                console.log("aa");
-            } else {
-                setCookie("user_id", $("#user_id").val());
-                setCookie("user_psd", $("#password_1").val());
-                console.log("bb");
-            }
-        }
-        //登陆成功设置cookie-end
-
-
-        //如果之前存过，取出来放到文本框里-start
-        if (getCookie("user_id")) {
-            user_id_bool = true
-            $("#user_id").val(getCookie("user_id"));
-            $("#password_1").val(getCookie("user_psd"));
-            $("#rember_pw").prop("checked", true);
-        }
-        //-end
     })
 </script>
 

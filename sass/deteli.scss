@@ -161,8 +161,8 @@
                         width: 30px;
                         height: 29px;
                         border: solid 1px #cecece;
-                        position: relative;
-                        top: -3px;
+                        // position: relative;
+                        // top: -3px;         
                         text-align: center;
                         line-height: 29px;
                         z-index: -5;
@@ -178,6 +178,8 @@
                         font-size: 19px;
                         text-align: center;
                         cursor: pointer;
+                        position: relative;
+                        top: 3px;
 
                     }
                 }

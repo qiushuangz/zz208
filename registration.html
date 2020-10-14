@@ -126,119 +126,124 @@
 </body>
 <script>
     $(function () {
-        let user_id_bool = false;
-        let password_1_bool = false;
-        let password_2_bool = false;
-        let check_1_bool = false;
-        let check_code_bool = false;
+        // let user_id_bool = false;
+        // let password_1_bool = false;
+        // let password_2_bool = false;
+        // let check_1_bool = false;
+        // let check_code_bool = false;
+        let user_id_bool = true;
+        let password_1_bool = true;
+        let password_2_bool = true;
+        let check_1_bool = true;
+        let check_code_bool = true;
 
         //验证手机号
-        $("#user_id").bind("input propertychange", function (event) {
-            var ck_user_id = /^1\d{10}$/;
-            if ($("#user_id").val()) {
-                if (ck_user_id.test($("#user_id").val())) {
-                    $("#user_id").next().css({
-                        "opacity": "1",
-                        "color": "green"
-                    })
-                    $("#user_id").next().text("格式正确")
-                    user_id_bool = true
-                } else {
-                    $("#user_id").next().css({
-                        "opacity": "1",
-                        "color": "red"
-                    })
-                    $("#user_id").next().text("手机号码格式不正确")
-                }
-            } else {
-                $("#user_id").next().css({
-                    "opacity": "0",
-                })
-            }
+        // $("#user_id").bind("input propertychange", function (event) {
+        //     var ck_user_id = /^1\d{10}$/;
+        //     if ($("#user_id").val()) {
+        //         if (ck_user_id.test($("#user_id").val())) {
+        //             $("#user_id").next().css({
+        //                 "opacity": "1",
+        //                 "color": "green"
+        //             })
+        //             $("#user_id").next().text("格式正确")
+        //             user_id_bool = true
+        //         } else {
+        //             $("#user_id").next().css({
+        //                 "opacity": "1",
+        //                 "color": "red"
+        //             })
+        //             $("#user_id").next().text("手机号码格式不正确")
+        //         }
+        //     } else {
+        //         $("#user_id").next().css({
+        //             "opacity": "0",
+        //         })
+        //     }
 
-        });
+        // });
         //验证密码
-        $("#password_1").bind("input propertychange", function (event) {
-            let ck_password_1 = /^[a-z0-9_-]{6,18}$/;
-            if ($("#password_1").val()) {
-                if (ck_password_1.test($("#password_1").val())) {
-                    $("#password_1").next().css({
-                        "opacity": "1",
-                        "color": "green"
-                    })
-                    $("#password_1").next().text("格式正确")
-                    password_1_bool = true
-                } else {
-                    $("#password_1").next().css({
-                        "opacity": "1",
-                        "color": "red"
-                    })
-                    $("#password_1").next().text("密码格式不正确")
-                }
-            } else {
-                $("#password_1").next().css({
-                    "opacity": "0",
-                })
-            }
-            ////
-            $("#password_2").bind("input propertychange", function (event) {
-                if ($("#password_2").val()) {
-                    if ($("#password_1").val() == $("#password_2").val()) {
-                        $("#password_2").next().css({
-                            "opacity": "1",
-                            "color": "green"
-                        })
-                        $("#password_2").next().text("格式正确")
-                        password_2_bool = true
-                    } else {
-                        $("#password_2").next().css({
-                            "opacity": "1",
-                            "color": "red"
-                        })
-                        $("#password_2").next().text("密码输入不一致")
-                    }
-                } else {
-                    $("#password_2").next().css({
-                        "opacity": "0",
-                    })
-                }
-            });
-        });
+        // $("#password_1").bind("input propertychange", function (event) {
+        //     let ck_password_1 = /^[a-z0-9_-]{6,18}$/;
+        //     if ($("#password_1").val()) {
+        //         if (ck_password_1.test($("#password_1").val())) {
+        //             $("#password_1").next().css({
+        //                 "opacity": "1",
+        //                 "color": "green"
+        //             })
+        //             $("#password_1").next().text("格式正确")
+        //             password_1_bool = true
+        //         } else {
+        //             $("#password_1").next().css({
+        //                 "opacity": "1",
+        //                 "color": "red"
+        //             })
+        //             $("#password_1").next().text("密码格式不正确")
+        //         }
+        //     } else {
+        //         $("#password_1").next().css({
+        //             "opacity": "0",
+        //         })
+        //     }
+        ////
+        //     $("#password_2").bind("input propertychange", function (event) {
+        //         if ($("#password_2").val()) {
+        //             if ($("#password_1").val() == $("#password_2").val()) {
+        //                 $("#password_2").next().css({
+        //                     "opacity": "1",
+        //                     "color": "green"
+        //                 })
+        //                 $("#password_2").next().text("格式正确")
+        //                 password_2_bool = true
+        //             } else {
+        //                 $("#password_2").next().css({
+        //                     "opacity": "1",
+        //                     "color": "red"
+        //                 })
+        //                 $("#password_2").next().text("密码输入不一致")
+        //             }
+        //         } else {
+        //             $("#password_2").next().css({
+        //                 "opacity": "0",
+        //             })
+        //         }
+        //     });
+        // });
         //点击切换验证码图片
 
-        let check_n = ""
-        $("#check_img").click(function () {
-            axios.get("http://localhost:3000/pic_code").then(res => {
-                let i = Math.round(Math.random() * 11);
-                $("#check_img").attr("src", `${res.data[i].pic}`)
-                check_n = res.data[i].picname
-            })
-        })
-        $("#check_img").click()
+        // let check_n = ""
+        // $("#check_img").click(function () {
+        //     axios.get("http://localhost:3000/pic_code").then(res => {
+        //         let i = Math.round(Math.random() * 11);
+        //         $("#check_img").attr("src", `${res.data[i].pic}`)
+        //         check_n = res.data[i].picname
+        //     })
+        // })
+        // $("#check_img").click()
         //验证码
-        $("#check_1").bind("input propertychange", function (event) {
-            console.log($("#check_1").val(), check_n);
-            if ($("#check_1").val()) {
-                if ($("#check_1").val() == check_n) {
-                    $("#check_1").next().next().css({
-                        "opacity": "1",
-                        "color": "green"
-                    })
-                    $("#check_1").next().next().text("验证码正确")
-                    check_1_bool = true
-                } else {
-                    $("#check_1").next().next().css({
-                        "opacity": "1",
-                        "color": "red"
-                    })
-                    $("#check_1").next().next().text("请输入正确的验证码")
-                }
-            } else {
-                $("#check_1").next().next().css({
-                    "opacity": "0",
-                })
-            }
-        });
+        // $("#check_1").bind("input propertychange", function (event) {
+        //     console.log($("#check_1").val(), check_n);
+        //     if ($("#check_1").val()) {
+        //         if ($("#check_1").val() == check_n) {
+        //             $("#check_1").next().next().css({
+        //                 "opacity": "1",
+        //                 "color": "green"
+        //             })
+        //             $("#check_1").next().next().text("验证码正确")
+        //             check_1_bool = true
+        //         } else {
+        //             $("#check_1").next().next().css({
+        //                 "opacity": "1",
+        //                 "color": "red"
+        //             })
+        //             $("#check_1").next().next().text("请输入正确的验证码")
+        //         }
+        //     } else {
+        //         $("#check_1").next().next().css({
+        //             "opacity": "0",
+        //         })
+        //     }
+        // });
         //短信验证码
         let phone_code = 0
         $("#get_code").click(function () {
@@ -307,43 +312,33 @@
         //协议默认勾选
         $("#check_3").prop("checked", true);
         //注册提交
+        //判断登录是否成功
         $("#btn_reg").click(function () {
-            axios.get(`http://localhost:3000/user/?id=${$("#user_id").val()}`).then(res => {
+            console.log("55");
+            axios.get(
+                `http://jx.xuzhixiang.top/ap/api/reg.php?username=${$("#user_id").val()}&password=${$("#password_1").val()}`
+            ).then(res => {
+                console.log($("#user_id").val());
+                console.log($("#password_1").val());
                 console.log(res.data);
-                if (res.data.length == 0) {
-                    let check3 = $("#check_3[type='checkbox']").is(':checked');
-                    if (user_id_bool && password_1_bool && password_2_bool && check_1_bool &&
-                        check3 &&
-                        check_code_bool) {
-                        axios.post("http://localhost:3000/user", {
-                            id: $("#user_id").val(),
-                            password: $("#password_1").val(),
-                        }).then(function () {
-                            $("#btn_reg").attr("value", "注册成功...正在跳转")
-                            timer = setTimeout(function () {
-                                $(location).attr('href', "login.html");
-                            }, 2000);
-                            console.log("注册成功");
-                        }).catch(function (e) {
-                            console.log(e);
-                        });
-                    } else {
-                        $("#btn_reg").next().css({
-                            "opacity": "1",
-                            "color": "red"
-                        })
-                        $("#btn_reg").next().text("注册失败，请检查您的注册信息")
-                    }
+                if (res.data.code == 1) {
+                    $("#btn_reg").attr("value", "注册成功...正在跳转")
+                    timer = setTimeout(function () {
+                        $(location).attr('href', "login.html");
+                    }, 2000);
+                    console.log("注册成功");
                 } else {
                     $("#btn_reg").next().css({
                         "opacity": "1",
                         "color": "red"
                     })
-                    $("#btn_reg").next().text("注册失败，已存在此用户")
+                    $("#btn_reg").next().text("注册失败，请检查您的注册信息")
                 }
+
+
             })
         })
-
+        //////
 
 
     })
