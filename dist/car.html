@@ -79,8 +79,7 @@
                       ${res.data[i].pname} </a>
                     </p>
                     <p class="pprice">${res.data[i].pprice}</p>
-                    <div class="num"><span class="jian">-</span><input t
-                        ype="text" value="${res.data[i].pnum}"><span class="jia">+</span>
+                    <div class="num"><span class="jian">-</span><input type="text" value="${res.data[i].pnum}"><span class="jia">+</span>
                     </div>
                     <div class="much">${res.data[i].pnum*res.data[i].pprice}</div>
                     <div class="del_this">删除</div>
@@ -93,9 +92,6 @@
             let k = $(".num").children().eq(1).val();
 
             $(".jian").click(function () {
-
-
-
                 console.log(this);
                 let k = $(this).next().val();
                 k = k - 1
@@ -109,8 +105,9 @@
                 $.get(`http://jx.xuzhixiang.top/ap/api/cart-update-num.php?uid=${uid}&pid=${
                 $(this).parent().parent().attr("data_id")}&pnum=${k}`)
                     .then(res => {
-                        // console.log(res.data);
+                        console.log(res);
                         all_n()
+                        getallprice();
                     })
             })
             $(".jia").click(function () {
@@ -122,12 +119,36 @@
                 $.get(`http://jx.xuzhixiang.top/ap/api/cart-update-num.php?uid=${uid}&pid=${
                    $(this).parent().parent().attr("data_id")}&pnum=${j}`)
                     .then(res => {
-                        console.log(res.data);
+                        console.log(res);
                         all_n()
+                        getallprice();
                     })
+            })
+            //输入框进行修改
+            $(".num input").change(function () {
+                if ($(this).val() <= 0) {
+                    $(this).val(1)
+                }
+                $(this).parent().next().text($(this).val() * parseInt($(this).parent().prev()
+                    .text()))
+                $.get(`http://jx.xuzhixiang.top/ap/api/cart-update-num.php?uid=${uid}&pid=${$(this).parent().parent().attr("data_id")}&pnum=${
+                $(this).val()}`)
+                    .then(res => {
+                        console.log(res);
+                        all_n()
+                        getallprice();
+
+                    })
+
             })
 
 
+
+
+
+
+
+            //删除商品
             $(".del_this").click(function () {
                 $.get(
                         `http://jx.xuzhixiang.top/ap/api/cart-delete.php?uid=${uid}&pid=${$(this).parent().attr("data_id")}`
@@ -136,11 +157,24 @@
                         console.log(res);
                         $(this).parent().remove()
                         all_n()
+                        //////
+                        let cn = 0
+                        for (let j = 0; j < $(".check_li").length; j++) {
+                            if ($(".check_li").eq(j).is(':checked')) {
+                                cn++;
+                            }
+                            if (cn == $(".check_li").length) {
+                                $('#checkall').prop("checked", true);
+                            } else {
+                                $('#checkall').prop("checked", false);
+                            }
+                            getallprice();
+                        }
                     })
 
             })
             ///得到总价
-            console.log($(".check_li").eq(1).parent().find(".pprice").text() - 0);
+            // console.log($(".check_li").eq(1).parent().find(".pprice").text() - 0);
 
             function getallprice() {
                 let sum = 0;
@@ -155,7 +189,7 @@
                 }
                 $(".choose_1").text(sum_li)
                 $(".shopall").text(sum)
-                console.log(sum_li, sum)
+                // console.log(sum_li, sum)
             }
             // getallprice();
 
