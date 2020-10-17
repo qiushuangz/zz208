@@ -119,6 +119,9 @@
     //解析查询字符串
     let pid = location.search.replace("?", "")
     console.log(pid);
+    if (!pid) {
+        $(location).attr('href', "list.html");
+    }
     $.get(`http://jx.xuzhixiang.top/ap/api/detail.php?id=${pid}`).then(res => {
         console.log(res.data);
         res.data.pimg = res.data.pimg.split(",")
@@ -149,6 +152,8 @@
             $(".b3").children().attr("src", $(this).children().attr("src"))
 
         })
+        $(".b2_b ul li").eq(0).click()
+
         $("#btn_1").click(function () {
             let a1 = parseFloat($(".b2_b ul").css("left"))
             if (a1 > -60) {

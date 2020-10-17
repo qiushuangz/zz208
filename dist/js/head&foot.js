@@ -55,6 +55,10 @@ $(function () {
     }
 
 
+    // console.log($(".select-con a"));
+    // $(".select-con a").click(function () {
+    //     $(location).attr('href', "list.html");
+    // })
 
 
 

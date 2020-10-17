@@ -17,9 +17,9 @@
     <header></header>
     <div class="list_full ">
         <div class="list">
-            <div class="select_1">
-
-            </div>
+            <!-- <div class="select_1">
+                
+            </div> -->
             <div class="select_2 ">
                 <ul id="innter_str">
                     <!-- <li>
@@ -324,7 +324,9 @@
             $(this).siblings().removeClass("now_cl");
             $(this).parent().prev().children().children().attr("src", $(this).attr("src"))
         })
-        $(".p2").children().eq(0).click()
+        for (let k = 0; k < $(".p2").length; k++) {
+            $(".p2").eq(k).children().eq(0).click()
+        }
     })
 </script>
 
